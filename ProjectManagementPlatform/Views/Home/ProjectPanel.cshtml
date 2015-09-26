@@ -1,0 +1,199 @@
+﻿@model ProjectManagementPlatform.Models.TestModels.testProject
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section StyleSheets{
+    <link rel="stylesheet" href="../assets/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="../assets/css/pages/task-menu.css" />
+    <link rel="stylesheet" href="~/assets/vendor/nestable/nestable.css" />
+    <link rel="stylesheet" href="~/assets/vendor/html5sortable/sortable.css" />
+    <link rel="stylesheet" href="~/assets/vendor/tasklist/tasklist.css" />
+    <link href="~/assets/css/taskOverview.css" rel="stylesheet" />
+    <link href="~/assets/vendor/alertify-js/alertify.css" rel="stylesheet" />
+}
+
+<div class="page-content container-fluid">
+    <!--Page Header-->
+    <div class="page-header  page-header-bordered">
+        <h4>@Model.Title</h4>
+        <!--Header Actions-->
+        <div class="page-header-actions">
+            <div class="panel-action btn btn-primary toggle-project-settings" aria-label="Page Header Actions" role="group">
+                <span>Project Overview</span>
+                <span class="icon wb-chevron-down toggle-project-settings-icon" aria-hidden="true"></span>
+            </div>
+        </div>
+        <!--End Header Actions-->
+    </div>
+    <!--End Page Header-->
+    <!--Project Settings-->
+    <div class="col-lg-12 col-md-12 project-settings" style="margin-top:-20px; display:none; height:300px;">
+        <div class="panel nav-tabs-horizontal">
+            <div class="panel-heading">
+                <h3 class="panel-title">Project Settings</h3>
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+    </div>
+    <!--End Project Settings-->
+    <!--Tasks Menu-->
+    <div class="col-lg-5 col-md-5">
+        <div class="panel nav-tabs-horizontal">
+            <!--Panel Heading-->
+            <div class="panel-heading">
+                <h3 class="panel-title">Tasks</h3>
+                <div class="panel-actions">
+                    <a class="panel-action" id="addTaskBtn" aria-hidden="true">
+                        <i class="icon wb-plus"></i>   Add Task
+                    </a>
+                </div>
+            </div>
+            <!--Panel Heading-->
+            <!--Menu Tabs-->
+            <ul class="nav nav-tabs nav-tabs-line" data-plugin="nav-tabs" role="tablist">
+                <li class="active" role="presentation">
+                    <a data-toggle="tab" href="#All"
+                       role="tab">All Tasks</a>
+                </li>
+                <li role="presentation">
+                    <a data-toggle="tab" href="#Pending"
+                       role="tab">Pending</a>
+                </li>
+                <li role="presentation">
+                    <a data-toggle="tab" href="#InProgress"
+                       role="tab">In Progress</a>
+                </li>
+                <li role="presentation">
+                    <a data-toggle="tab" href="#Done"
+                       role="tab">Done</a>
+                </li>
+                <!--Dropdown menu for smaller screens-->
+                <li class="dropdown" role="presentation">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <span class="caret"></span>Dropdown
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="active" role="presentation">
+                            <a data-toggle="tab" href="#All"
+                               role="tab">All Tasks</a>
+                        </li>
+                        <li role="presentation">
+                            <a data-toggle="tab" href="#Pending"
+                               role="tab">Pending</a>
+                        </li>
+                        <li role="presentation">
+                            <a data-toggle="tab" href="#InProgress"
+                               role="tab">In Progress</a>
+                        </li>
+                        <li role="presentation">
+                            <a data-toggle="tab" href="#Done"
+                               role="tab">Done</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!--End Menu Tabs-->
+            <!--Panel Content-->
+            <div class="panel-body">
+                <div class="tab-content">
+                    <!--All tasks panel-->
+                    <div class="tab-pane active" id="All" role="tabpanel">
+                        <div style="overflow-y: scroll; height: 500px;" class="scroll-container">
+                            <ul class="list-group list-group-bordered">
+                                @foreach (var task in Model.Tasks)
+                                {
+                                    var active = "";
+                                    if (task == Model.Tasks.First())
+                                    {
+                                        active = "active";
+                                    }
+                                    <li class="list-group-item taskItem @active" style="border-radius:0px;">
+                                        <span class="taskName">@task.Title</span>
+                                        <span class="label label-@task.StatusColor pull-right">@task.Status</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Pending tasks panel-->
+                    <div class="tab-pane" id="Pending" role="tabpanel">
+                        <div style="overflow-y: scroll; height: 500px;" class="scroll-container">
+                            <ul class="list-group list-group-bordered">
+                                @foreach (var task in Model.Tasks)
+                                {
+                                    if (task.Status == "Pending")
+                                    {
+                                        <li class="list-group-item taskItem" style="border-radius:0px;">
+                                            <span class="taskName">@task.Title</span>
+                                            <span class="label label-danger pull-right">@task.Status</span>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!--In Proggres Tasks panel-->
+                    <div class="tab-pane" id="InProgress" role="tabpanel">
+                        <div style="overflow-y: scroll; height: 500px;" class="scroll-container">
+                            <ul class="list-group list-group-bordered">
+                                @foreach (var task in Model.Tasks)
+                                {
+                                    if (task.Status == "In Progress")
+                                    {
+                                        <li class="list-group-item taskItem" style="border-radius:0px;">
+                                            <span class="taskName">@task.Title</span>
+                                            <span class="label label-warning pull-right">@task.Status</span>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Done tasks panel-->
+                    <div class="tab-pane" id="Done" role="tabpanel">
+                        <div style="overflow-y: scroll; height: 500px;" class="scroll-container">
+                            <ul class="list-group list-group-bordered">
+                                @foreach (var task in Model.Tasks)
+                                {
+                                    if (task.Status == "Done")
+                                    {
+                                        <li class="list-group-item taskItem " style="border-radius:0px;">
+                                            <span class="taskName">@task.Title</span>
+                                            <span class="label label-success pull-right">@task.Status</span>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Panel Content-->
+        </div>
+    </div>
+    <!--End Task Menu-->
+    <!--Task Window-->
+    <div class="col-lg-7 col-md-7 task-overview">
+        @Html.Partial("../Partials/PanelPartials/_taskOverviewPanel", Model.Tasks.First())
+    </div>
+    <!--End Task Window-->
+</div>
+
+@section PluginScripts{
+    <script src="../../assets/vendor/masonry/masonry.pkgd.min.js"></script>
+}
+@section Scripts{
+    <script type="text/javascript" src="../../assets/js/plugins/responsive-tabs.js"></script>
+    <script type="text/javascript" src="../../assets/js/components/tabs.js"></script>
+    <script type="text/javascript" src="../../assets/js/components/asprogress.js"></script>
+    <script type="text/javascript" src="~/assets/vendor/html5sortable/html.sortable.min.js"></script>
+    <script type="text/javascript" src="~/assets/vendor/nestable/jquery.nestable.js"></script>
+    <script type="text/javascript" src="~/assets/js/components/html5sortable.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/components/tasklist.min.js"></script>
+    <script src="~/assets/js/taskOverview.js"></script>
+    <script src="~/assets/js/panel.js"></script>
+    <script src="~/assets/vendor/alertify-js/alertify.js"></script>
+}

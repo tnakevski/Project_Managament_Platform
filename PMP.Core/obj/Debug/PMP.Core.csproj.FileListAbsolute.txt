@@ -1,0 +1,10 @@
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\bin\Debug\PMP.Core.dll.config
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\bin\Debug\PMP.Core.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\bin\Debug\PMP.Core.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\bin\Debug\EntityFramework.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\bin\Debug\EntityFramework.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\obj\Debug\PMP.Core.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\obj\Debug\PMP.Core.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Core\obj\Debug\PMP.Core.csprojResolveAssemblyReference.cache

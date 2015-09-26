@@ -1,0 +1,12 @@
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\obj\Debug\PMP.Repositories.DataSQL.csprojResolveAssemblyReference.cache
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\PMP.Repositories.DataSQL.dll.config
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\PMP.Repositories.DataSQL.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\PMP.Repositories.DataSQL.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\EntityFramework.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\PMP.Core.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\PMP.Core.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\EntityFramework.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\obj\Debug\PMP.Repositories.DataSQL.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\PMP.Repositories.DataSQL\obj\Debug\PMP.Repositories.DataSQL.pdb

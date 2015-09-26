@@ -1,0 +1,10 @@
+﻿@model IEnumerable<ProjectManagementPlatform.Models.TestModels.testProject>
+@foreach (var project in Model)
+{
+    <li class="site-menu-item">
+        <a href="@Url.Action("ProjectPanel", "Home", new { title = project.Title })" data-slug="layout">
+            <i class="site-menu-icon wb-file" aria-hidden="true"></i>
+            <span class="site-menu-title">@project.Title</span>
+        </a>
+    </li>
+}

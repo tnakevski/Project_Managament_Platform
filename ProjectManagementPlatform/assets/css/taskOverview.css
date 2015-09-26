@@ -1,0 +1,35 @@
+﻿.addTask{
+    border-radius:0;
+}
+
+.subtask-action-button{
+    cursor:pointer;
+    float:right;
+}
+
+.task-logs-item:hover{
+    background-color:#4E97D9 !important;
+    color:#fff;
+}
+
+
+.my-comment{
+    background-color:#4E97D9 !important;
+    color:white;
+}
+
+.my-comment .comment-body .comment-author{
+    color:white !important;
+}
+
+.my-comment .comment-body .comment-meta{
+    color:white !important;
+}
+
+.task-due-date:hover{
+    cursor:default !important;
+}
+
+.due-date-settings div{
+    display:inline-block;
+}

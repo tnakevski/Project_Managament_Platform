@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjectManagementPlatform.Models.TestModels.testMessages>
+<a data-toggle="dropdown" href="javascript:void(0)" title="Messages" aria-expanded="false"
+   data-animation="slide-bottom" role="button">
+    <i class="icon wb-envelope" aria-hidden="true"></i>
+    @if (Model.Count() != 0)
+    {
+        <span class="badge badge-info up">
+            @Model.Count()
+        </span>
+    }
+</a>
+<ul class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
+    <li class="dropdown-menu-header" role="presentation">
+        <h5>MESSAGES</h5>
+        <span class="label label-round label-info">New @Model.Count()</span>
+    </li>
+    <li class="list-group" role="presentation">
+        <div data-role="container">
+            <div data-role="content">
+                @foreach (var message in Model)
+                {
+                    <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                        <div class="media">
+                            <div class="media-left padding-right-10">
+                                <span class="avatar avatar-sm avatar-online">
+                                    <img src="@message.Avatar" alt="..." />
+                                    <i></i>
+                                </span>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading">@message.User</h6>
+                                <div class="media-meta">
+                                    <time datetime="2015-06-17T20:22:05+08:00">@message.Date</time>
+                                </div>
+                                <div class="media-detail">@message.Message</div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </li>
+    <li class="dropdown-menu-footer" role="presentation">
+        <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
+            <i class="icon wb-settings" aria-hidden="true"></i>
+        </a>
+        <a href="javascript:void(0)" role="menuitem">
+            See all messages
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,286 @@
+﻿@model ProjectManagementPlatform.Models.TestModels.testTask
+
+<div class="panel nav-tabs-horizontal task-control-panel">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span id="taskTitle">@Model.Title</span></h3>
+        <div class="panel-actions">
+            <div class="panel-action task-due-date">Due date: 9/18/2015</div>
+        </div>
+        <!--Task Tabs-->
+        <ul class="nav nav-tabs nav-tabs-line" data-plugin="nav-tabs" role="tablist">
+            <li class="active" role="presentation">
+                <a data-toggle="tab" href="#taskOverview"
+                   role="tab">Task Overview</a>
+            </li>
+            <li role="presentation">
+                <a data-toggle="tab" href="#taskSettings"
+                   role="tab">Task Settings</a>
+            </li>
+            <li role="presentation">
+                <a data-toggle="tab" href="#taskComments" role="tab">
+                    Task Comments
+                    <span class="badge badge-danger">5</span>
+                </a>
+            </li>
+            <li role="presentation">
+                <a data-toggle="tab" href="#taskLogs"
+                   role="tab">Task Logs</a>
+            </li>
+            <!--Dropdown menu for smaller screens-->
+            <li class="dropdown" role="presentation">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <span class="caret"></span>Dropdown
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li class="active" role="presentation">
+                        <a data-toggle="tab" href="#taskOverview"
+                           role="tab">Task Overview</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#taskSettings"
+                           role="tab">Task Settings</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#taskComments"
+                           role="tab">Task Comments</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#taskLogs"
+                           role="tab">Task Logs</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <!--Panel Content-->
+        <div class="panel-body">
+            <div class="tab-content">
+                <!--Task Overview-->
+                <div class="tab-pane active" id="taskOverview" role="tabpanel">
+                    <!--Assigned people on the task-->
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Nakevski Toni">
+                                <img src="/assets/portraits/profile.jpg" />
+                            </span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Nakevski Toni">
+                                <img src="../assets/portraits/2.jpg" />
+                            </span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Nakevski Toni">
+                                <img src="../assets/portraits/3.jpg" />
+                            </span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Nakevski Toni">
+                                <img src="../assets/portraits/4.jpg" />
+                            </span>
+                        </div>
+                    </div>
+                    <!--End of assigned pepople on the task-->
+                    <!--Subtasks List-->
+                    <div style="margin-top:20px">
+                        <button type="button" class="btn btn-outline btn-info btn-small addSubtask margin-bottom-10" data-target="#addSubtaskModal" data-toggle="modal">
+                            <i class="icon wb-plus"></i>
+                            <span class="hidden-xs">Add Subtask</span>
+                        </button>
+                        <div class="scroll-container" style="overflow-y:scroll; height:400px">
+                            <ul class="list-task list-group list-group-bordered sortable subtasks" data-role="tasklist" data-plugin="sortable">
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="1" name="inputCheckboxesCall" class="check-subtask-done">
+                                        <label for="1">
+                                            <span>Call clients for follow-up</span>
+                                        </label>
+                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="2" name="inputCheckboxesCall" class="check-subtask-done">
+                                        <label for="2">
+                                            <span>Call clients for follow-up</span>
+                                        </label>
+                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item " data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="3" name="inputCheckboxesBook" class="check-subtask-done">
+                                        <label for="3">
+                                            <span>Book flight for holiday</span>
+                                        </label>
+                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="4" name="inputCheckboxesForward" class="check-subtask-done">
+                                        <label for="4">
+                                            <span>Forward important tasks</span>
+                                        </label>
+                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="5" name="inputCheckboxesRecieve" class="check-subtask-done">
+                                        <label for="5">
+                                            <span>Recieve shipment</span>
+                                        </label>
+                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End of Subtasks List-->
+                    <p>Task Description:</p>
+                    <p>
+                        Conturbamur senectutem saepti statua, putanda homini acuti
+                        dialectica levamur urbanitas animadversionem mala se depulsa,
+                        magis nihilo efficeret tenetur cives gloriae concursio defendit
+                        conscientiam nascuntur, refugiendi defendit falsi platonem parand
+                        a metum iustioribus cognita robustus, tuum omnia tur cives gloriae concursio defendit
+                        conscientiam nascuntur, refugiendi defendit falsi platonem parand
+                    </p>
+                </div>
+                <!--Task Settings-->
+                <div class="tab-pane" id="taskSettings" role="tabpanel">
+                    <div class="row group">
+                        <input class="form-control" type="text" placeholder="Add new name for the current task..."/>
+                        <div class="btn btn-primary margin-top-10">Save new name</div>
+                    </div>
+                    <hr />
+                    <div class="row group">
+                        <div>
+                            <span>Current task status: Done</span>
+                        </div>
+                        <div class="btn btn-primary margin-top-10">Change task status</div>
+                    </div>
+                    <hr />
+                    <div class="row group">
+                        <label for="taskDatetimePicker">
+                            <span>Select new due date and click on the save button to change it</span>
+                        </label>
+                        <div class='input-group col-md-8 date datetimepicker' id="taskDatetimePicker">
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="icon wb-time"></span>
+                            </span>
+                        </div>
+                        <div class="btn btn-primary margin-top-10">Save new date</div>
+                    </div>
+                    <hr />
+                    <div class="row group">
+                        <div>
+                            <span>Currently working on task: 4</span>
+                        </div>
+                        <div class="btn btn-primary margin-top-10">Assign to task</div>
+                    </div>
+                    <hr />
+                    <div class="row group">
+                        <div>
+                            <span>Delete Task @Model.Title</span>
+                        </div>
+                        <div class="btn btn-danger btn-outline margin-top-10">Delete Task</div>
+                    </div>
+                    <hr />
+                </div>
+                <!--Task Comments-->
+                <div class="tab-pane" id="taskComments">
+                    <form class="comment-reply" action="#">
+                        <div class="form-group">
+                            <textarea class="form-control comment-text-area" rows="5" placeholder="Comment here"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary add-comment" type="button">Leave Comment</button>
+                        </div>
+                    </form>
+                    <div style="overflow-y:scroll; height: 400px;" class="scroll-container">
+                        <ul class="list-group list-group-gap comment-list">
+                            <li class=" list-group-item bg-blue-grey-100">
+                                <div class="comment media">
+                                    <div class="media-left">
+                                        <div class="avatar avatar-sm">
+                                            <img src="../../assets/portraits/2.jpg" />
+                                        </div>
+                                    </div>
+                                    <div class="comment-body media-body media-left">
+                                        <div class="comment-author">June Lane</div>
+                                        <div class="comment-meta">
+                                            <span class="date">9/18/2015</span>
+                                        </div>
+                                        <div class="comment-content">
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips
+                                                um has been the industry's standard dummy text ever since the 1500s, when an unknown pri
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--Task Logs-->
+                <div class="tab-pane scroll-container" id="taskLogs" role="tabpanel" style="overflow-y:scroll; height: 400px;">
+                    <ul class="list-group list-group-gap task-logs"></ul>
+                </div>
+            </div>
+        </div>
+        <!--End Panel Content-->
+    </div>
+</div>
+<div class="modal fade" id="addSubtaskModal" tabindex="-1" role="dialog" aria-labelledby="addTaskModal">
+    <div class="modal-dialog modal-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Please enter subtask name</h4>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" id="newSubtaskTitle" placeholder="Subtask Title" style="width:300px" required />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveSubtaskBtn">Add Subtask</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="subtaskOverviewModal" tabindex="-1" role="dialog" aria-labelledby="addTaskModal">
+    <div class="modal-dialog modal-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"">Subtask Overview</h4>
+            </div>
+            <div class="modal-body">
+                <div class="subtask-overview-description"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

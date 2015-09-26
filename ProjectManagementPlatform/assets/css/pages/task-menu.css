@@ -1,0 +1,17 @@
+﻿
+.list-group .taskItem:hover,
+.list-group .taskItem:hover .taskAction
+{
+    background-color:#62A8EA;
+    color:#fff;
+    cursor:pointer;
+} 
+
+.list-group .active .taskAction{
+    color:#fff;
+}
+
+#addTaskBtn:hover{
+    color:#3aa99e;
+}
+

@@ -1,0 +1,88 @@
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\ProjectManagementPlatform.dll.config
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\ProjectManagementPlatform.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\ProjectManagementPlatform.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\Antlr3.Runtime.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\Newtonsoft.Json.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Helpers.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Mvc.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Optimization.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Razor.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.Razor.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\WebGrease.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Helpers.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Mvc.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Optimization.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Razor.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.Razor.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\Newtonsoft.Json.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\bin\Antlr3.Runtime.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.csprojResolveAssemblyReference.cache
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform\ProjectManagementPlatform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.pdb
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\ProjectManagementPlatform.dll.config
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\ProjectManagementPlatform.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\ProjectManagementPlatform.pdb
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\Antlr3.Runtime.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\Newtonsoft.Json.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Helpers.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Mvc.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Optimization.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Razor.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.Razor.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\WebGrease.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Helpers.xml
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Mvc.xml
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Optimization.xml
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.Razor.xml
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.xml
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\System.Web.WebPages.Razor.xml
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\Newtonsoft.Json.xml
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\bin\Antlr3.Runtime.pdb
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.csprojResolveAssemblyReference.cache
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.dll
+C:\Users\Toni\Desktop\ProjectManagementPlatform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\ProjectManagementPlatform.dll.config
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\ProjectManagementPlatform.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\ProjectManagementPlatform.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\Antlr3.Runtime.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\Newtonsoft.Json.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.Helpers.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.Mvc.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.Optimization.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.Razor.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.WebPages.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.WebPages.Razor.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\WebGrease.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.Helpers.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.Mvc.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.Optimization.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.Razor.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.WebPages.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\System.Web.WebPages.Razor.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\Newtonsoft.Json.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\Antlr3.Runtime.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.csprojResolveAssemblyReference.cache
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\Common.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\Common.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\PMP.Repositories.DataSQL.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\PMP.Core.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\EntityFramework.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\PMP.Repositories.DataSQL.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\PMP.Core.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\EntityFramework.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\EntityFramework.SqlServer.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\ProjectManagementPlatform\bin\EntityFramework.SqlServer.xml

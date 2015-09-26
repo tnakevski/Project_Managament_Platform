@@ -1,0 +1,4 @@
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\Common\bin\Debug\Common.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\Common\bin\Debug\Common.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\Common\obj\Debug\Common.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\Project Management Platform_2\Common\obj\Debug\Common.pdb

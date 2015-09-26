@@ -1,0 +1,383 @@
+﻿
+<!DOCTYPE html>
+<html class="no-js before-run" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <title>Dashboard | Remark Admin Template</title>
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <link rel="stylesheet" href="../assets/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="../assets/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="../assets/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="../assets/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="../assets/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="../assets/vendor/flag-icon-css/flag-icon.css">
+    <!-- Plugin -->
+    @RenderSection("StyleSheets", false)
+    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+    <!-- Page -->
+    <link rel="stylesheet" href="../assets/css/dashboard/v1.css">
+    <link href="~/assets/css/animate.css" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../assets/fonts/web-icons/web-icons.min.css">
+    <link rel="stylesheet" href="../assets/fonts/brand-icons/brand-icons.min.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+
+    <!--[if lt IE 9]>
+      <script src="../assets/vendor/html5shiv/html5shiv.min.js"></script>
+      <![endif]-->
+    <!--[if lt IE 10]>
+      <script src="../assets/vendor/media-match/media.match.min.js"></script>
+      <script src="../assets/vendor/respond/respond.min.js"></script>
+      <![endif]-->
+    <!-- Scripts -->
+    <script src="../assets/vendor/modernizr/modernizr.js"></script>
+    <script src="../assets/vendor/breakpoints/breakpoints.js"></script>
+    <script>
+        Breakpoints();
+    </script>
+</head>
+<body class="dashboard">
+    <!--[if lt IE 8]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+    <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle hamburger hamburger-close navbar-toggle-left hided"
+                    data-toggle="menubar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="hamburger-bar"></span>
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-target="#site-navbar-collapse"
+                    data-toggle="collapse">
+                <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-target="#site-navbar-search"
+                    data-toggle="collapse">
+                <span class="sr-only">Toggle Search</span>
+                <i class="icon wb-search" aria-hidden="true"></i>
+            </button>
+            <div class="navbar-brand navbar-brand-center">
+                <img class="navbar-brand-logo" src="../assets/images/logo.png" title="Remark">
+                <span class="navbar-brand-text"> Remark</span>
+            </div>
+        </div>
+        <div class="navbar-container container-fluid">
+            <!-- Navbar Collapse -->
+            <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+                <!-- Navbar Toolbar -->
+                <ul class="nav navbar-toolbar">
+                    <li class="hidden-float" id="toggleMenubar">
+                        <a data-toggle="menubar" href="#" role="button">
+                            <i class="icon hamburger hamburger-arrow-left">
+                                <span class="sr-only">Toggle menubar</span>
+                                <span class="hamburger-bar"></span>
+                            </i>
+                        </a>
+                    </li>
+                    <li class="hidden-xs" id="toggleFullscreen">
+                        <a class="icon icon-fullscreen" data-toggle="fullscreen" href="#" role="button">
+                            <span class="sr-only">Toggle fullscreen</span>
+                        </a>
+                    </li>
+                    <li class="hidden-float">
+                        <a class="icon wb-search" data-toggle="collapse" href="#site-navbar-search" role="button">
+                            <span class="sr-only">Toggle Search</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- End Navbar Toolbar -->
+                <!-- Navbar Toolbar Right -->
+                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                    <li class="dropdown">
+                        <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                           data-animation="slide-bottom" role="button">
+                            <span class="avatar avatar-online">
+                                <img class="my-avatar" src="~/assets/portraits/profile.jpg" />
+                                <i></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Profile</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="javascript:void(0)" role="menuitem"><i class="icon wb-payment" aria-hidden="true"></i> Billing</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Settings</a>
+                            </li>
+                            <li class="divider" role="presentation"></li>
+                            <li role="presentation">
+                                <a href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown notifications">
+                    </li>
+                    <li class="dropdown messages">
+                    </li>
+                    <li id="toggleChat">
+                        <a data-toggle="site-sidebar" href="javascript:void(0)" title="Chat" data-url="site-sidebar.tpl">
+                            <i class="icon wb-chat" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- End Navbar Toolbar Right -->
+            </div>
+            <!-- End Navbar Collapse -->
+            <!-- Site Navbar Seach -->
+            <div class="collapse navbar-search-overlap" id="site-navbar-search">
+                <form role="search">
+                    <div class="form-group">
+                        <div class="input-search">
+                            <i class="input-search-icon wb-search" aria-hidden="true"></i>
+                            <input type="text" class="form-control" name="site-search" placeholder="Search...">
+                            <button type="button" class="input-search-close icon wb-close" data-target="#site-navbar-search"
+                                    data-toggle="collapse" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Site Navbar Seach -->
+        </div>
+    </nav>
+    <div class="site-menubar">
+        <div class="site-menubar-body">
+            <div class="scroll-container">
+                <div>
+                    <ul class="site-menu">
+                        <li class="site-menu-category site-menu-button">
+                            <a href="#" data-slug="layout" data-target="#addProjectModal" data-toggle="modal">
+                                <i class="site-menu-icon wb-plus" aria-hidden="true"></i>
+                                <span class="site-menu-title">Create Project</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-category" style="border-top:1px solid grey">Projects</li>
+                        <li class="site-menu-item has-sub open">
+                            <a href="javascript:void(0)" data-slug="app">
+                                <i class="site-menu-icon wb-file" aria-hidden="true"></i>
+                                <span class="site-menu-title">Projects</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                            <ul class="site-menu-sub project-list"></ul>
+                        </li>
+                        <li class="site-menu-category" style="border-top:1px solid grey">Apps</li>
+                        <li class="site-menu-item has-sub">
+                            <a href="javascript:void(0)" data-slug="app">
+                                <i class="site-menu-icon wb-grid-4" aria-hidden="true"></i>
+                                <span class="site-menu-title">Apps</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                            <ul class="site-menu-sub">
+                                <li class="site-menu-item is-shown">
+                                    <a class="animsition-link" href="apps/calendar/calendar.html" data-slug="app-calendar">
+                                        <i class="site-menu-icon " aria-hidden="true"></i>
+                                        <span class="site-menu-title">Calendar</span>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item">
+                                    <a class="animsition-link" href="apps/contacts/contacts.html" data-slug="app-contacts">
+                                        <i class="site-menu-icon " aria-hidden="true"></i>
+                                        <span class="site-menu-title">Contacts</span>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item has-sub">
+                                    <a href="javascript:void(0)" data-slug="app-document">
+                                        <i class="site-menu-icon " aria-hidden="true"></i>
+                                        <span class="site-menu-title">Documents</span>
+                                        <span class="site-menu-arrow"></span>
+                                    </a>
+                                    <ul class="site-menu-sub">
+                                        <li class="site-menu-item">
+                                            <a class="animsition-link" href="apps/documents/articles.html" data-slug="app-document-articles">
+                                                <i class="site-menu-icon " aria-hidden="true"></i>
+                                                <span class="site-menu-title">Articles</span>
+                                            </a>
+                                        </li>
+                                        <li class="site-menu-item">
+                                            <a class="animsition-link" href="apps/documents/categories.html" data-slug="app-document-categories">
+                                                <i class="site-menu-icon " aria-hidden="true"></i>
+                                                <span class="site-menu-title">Categories</span>
+                                            </a>
+                                        </li>
+                                        <li class="site-menu-item">
+                                            <a class="animsition-link" href="apps/documents/article.html" data-slug="app-document-article">
+                                                <i class="site-menu-icon " aria-hidden="true"></i>
+                                                <span class="site-menu-title">Article</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="site-menu-item">
+                                    <a class="animsition-link" href="apps/mailbox/mailbox.html" data-slug="app-mailbox">
+                                        <i class="site-menu-icon " aria-hidden="true"></i>
+                                        <span class="site-menu-title">Mailbox</span>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item">
+                                    <a class="animsition-link" href="apps/projects/projects.html" data-slug="app-projects">
+                                        <i class="site-menu-icon " aria-hidden="true"></i>
+                                        <span class="site-menu-title">Projects</span>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item">
+                                    <a class="animsition-link" href="apps/forum/forum.html" data-slug="app-forum">
+                                        <i class="site-menu-icon " aria-hidden="true"></i>
+                                        <span class="site-menu-title">Forum</span>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item">
+                                    <a class="animsition-link" href="apps/media/overview.html" data-slug="app-media">
+                                        <i class="site-menu-icon " aria-hidden="true"></i>
+                                        <span class="site-menu-title">Media</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="site-menubar-footer">
+            <a href="javascript: void(0);" class="fold-show" data-placement="top" data-toggle="tooltip"
+               data-original-title="Settings">
+                <span class="icon wb-settings" aria-hidden="true"></span>
+            </a>
+            <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
+                <span class="icon wb-eye-close" aria-hidden="true"></span>
+            </a>
+            <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Logout">
+                <span class="icon wb-power" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+    <!-- Page -->
+    <div class="page animsition">
+        @RenderBody()
+    </div>
+    <!-- End Page -->
+    <!-- Footer -->
+    <footer class="site-footer">
+        <span class="site-footer-legal">© 2015 Remark</span>
+        <div class="site-footer-right">
+            Crafted with <i class="red-600 wb wb-heart"></i> by <a href="http://themeforest.net/user/amazingSurge">amazingSurge</a>
+        </div>
+    </footer>
+    <!--Create New Project modal-->
+    <div class="modal fade" id="addProjectModal" tabindex="-1" role="dialog" aria-labelledby="addProjectModal">
+        <div class="modal-dialog modal-center" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Fill out the form and click Add Project</h4>
+                    <p>Fields marked with * are optional and can be set later in the Project Settings panel</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-5 form-group">
+                            <label for="newProjectTitle">Title</label>
+                            <input type="text" class="form-control new-project-title-input" id="newProjectTitle" name="ProjectName" placeholder="Project Title" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-9 form-group">
+                            <label for="createProjectDatetimePicker">
+                                <span>Select due date fot the project *</span>
+                            </label>
+                            <div class='input-group date datetimepicker' id="createProjectDatetimePicker">
+                                <input type='text' class="form-control new-project-datepicker" />
+                                <span class="input-group-addon">
+                                    <span class="icon wb-time"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-9 form-group">
+                            <label for="newProjectTasks">Add Tasks to the project * (Note: You can add maximum 5 tasks from this form, for additional task check project settings)</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control new-project-task-input" id="newProjectTasks" name="newProjectTasks" placeholder="Task Title" />
+                                <div class="btn btn-primary input-group-addon new-project-add-task">Add Task</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul class="list-group-gap col-md-9 new-project-task-list"></ul>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label for="newProjectDescription">Enter Project Description</label>
+                            <textarea class="form-control new-project-description" rows="5" id="newProjectDescription" placeholder="Project description..."></textarea>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary add-project">Add Project</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core  -->
+    <script src="../assets/vendor/jquery/jquery.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap.js"></script>
+    <script src="../assets/vendor/animsition/jquery.animsition.js"></script>
+    <script src="../assets/vendor/asscroll/jquery-asScroll.js"></script>
+    <script src="../assets/vendor/mousewheel/jquery.mousewheel.js"></script>
+    <script src="../assets/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+    <script src="../assets/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+    <!-- Plugins -->
+    <script src="../assets/vendor/switchery/switchery.min.js"></script>
+    <script src="../assets/vendor/intro-js/intro.js"></script>
+    <script src="../assets/vendor/screenfull/screenfull.js"></script>
+    <script src="../assets/vendor/slidepanel/jquery-slidePanel.js"></script>
+    <script src="~/assets/js/plugins/dateFormat.js"></script>
+    <script type="text/javascript" src="../../Scripts/moment.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/bootstrap-datetimepicker.js"></script>
+    @RenderSection("PluginScripts", false)
+    <!-- Scripts -->
+    <script src="~/assets/js/app.js"></script>
+    <script src="../assets/js/core.js"></script>
+    <script src="../assets/js/site.js"></script>
+    <script src="../assets/js/sections/menu.js"></script>
+    <script src="../assets/js/sections/menubar.js"></script>
+    <script src="../assets/js/sections/sidebar.js"></script>
+    <script src="../assets/js/configs/config-colors.js"></script>
+    <script src="../assets/js/configs/config-tour.js"></script>
+    <script src="../assets/js/components/asscrollable.js"></script>
+    <script src="../assets/js/components/animsition.js"></script>
+    <script src="../assets/js/components/slidepanel.js"></script>
+    <script src="../assets/js/components/switchery.js"></script>
+    @RenderSection("Scripts", false)
+
+    <script>
+        $(document).ready(function ($) {
+            Site.run();
+
+            $.get("@Url.Action("ProjectList","Home")", {}, function (data) {
+                $(".project-list").html(data);
+            });
+            $.get("@Url.Action("Notifications", "Home")", {}, function (data) {
+                $(".notifications").html(data);
+            });
+            $.get("@Url.Action("Messages", "Home")", {}, function (data) {
+                $(".messages").html(data);
+            });
+        });
+    </script>
+</body>
+</html>
