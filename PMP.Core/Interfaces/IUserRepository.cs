@@ -9,5 +9,6 @@ namespace PMP.Core.Interfaces
 {
     public interface IUserRepository
     {
+        User FindByUsernameAndPass(string username, string password);
     }
 }

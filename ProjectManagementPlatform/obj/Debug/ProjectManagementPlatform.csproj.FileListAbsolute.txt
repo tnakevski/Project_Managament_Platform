@@ -122,3 +122,5 @@ C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platf
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.csprojResolveAssemblyReference.cache
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.dll
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\PMP.AppServices.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\PMP.AppServices.pdb

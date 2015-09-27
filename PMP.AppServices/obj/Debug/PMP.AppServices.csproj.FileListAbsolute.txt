@@ -3,3 +3,12 @@ C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platf
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\obj\Debug\PMP.AppServices.csprojResolveAssemblyReference.cache
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\obj\Debug\PMP.AppServices.dll
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\obj\Debug\PMP.AppServices.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\PMP.AppServices.dll.config
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\EntityFramework.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\PMP.Core.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\PMP.Repositories.DataSQL.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\PMP.Core.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\PMP.Repositories.DataSQL.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\EntityFramework.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\EntityFramework.SqlServer.xml

@@ -7,9 +7,11 @@ using System.Web.Mvc;
 using Common.Enumerations;
 using PMP.Repositories.DataSQL.Repositories;
 using PMP.Core.Entities;
+using ProjectManagementPlatform.Filters;
 
 namespace ProjectManagementPlatform.Controllers
 {
+    [AuthenticationFilter]
     public class HomeController : Controller
     {
         public ActionResult ProjectPanel(string title)

@@ -121,7 +121,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\AuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2486,6 +2488,8 @@
     <Content Include="Views\Partials\LayoutPartials\_notifications.cshtml" />
     <Content Include="Views\Partials\LayoutPartials\_messages.cshtml" />
     <Content Include="Views\Partials\PanelPartials\_taskOverviewPanel.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="src\js\angular\app.js" />
     <Content Include="src\js\angular\router.js" />
@@ -2592,6 +2596,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{061b720f-9117-42cb-8774-7eb5f54e9700}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMP.AppServices\PMP.AppServices.csproj">
+      <Project>{b9f6af94-9ebe-4527-b260-220d8bb8f57b}</Project>
+      <Name>PMP.AppServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\PMP.Core\PMP.Core.csproj">
       <Project>{ba34e55b-dbc7-4b76-ad02-d113d6ed207f}</Project>
