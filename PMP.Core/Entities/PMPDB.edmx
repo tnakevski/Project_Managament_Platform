@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProjectManagementPlatformDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PMPDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ProjectLogs">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,13 +21,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TItle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProjectSettings">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProjectId" Type="int" Nullable="false" />
           <Property Name="DateCreated" Type="date" Nullable="false" />
           <Property Name="DueDate" Type="date" />
         </EntityType>
@@ -83,16 +76,9 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Status" Type="tinyint" Nullable="false" />
           <Property Name="ProjectId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TaskSettings">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TaskId" Type="int" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="DateCreated" Type="date" Nullable="false" />
-          <Property Name="DueDate" Type="date" Nullable="false" />
+          <Property Name="DueDate" Type="date" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -126,18 +112,6 @@
             </Principal>
             <Dependent Role="ProjectLogs">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProjectSettings_Project">
-          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
-          <End Role="ProjectSettings" Type="Self.ProjectSettings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProjectSettings">
-              <PropertyRef Name="ProjectId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -273,29 +247,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TaskSettings_Task">
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
-          <End Role="TaskSettings" Type="Self.TaskSettings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tasks">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TaskSettings">
-              <PropertyRef Name="TaskId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="ProjectManagementPlatformDBModelStoreContainer">
+        <EntityContainer Name="PMPDBModelStoreContainer">
           <EntitySet Name="ProjectLogs" EntityType="Self.ProjectLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProjectSettings" EntityType="Self.ProjectSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectUsers" EntityType="Self.ProjectUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subtask" EntityType="Self.Subtask" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaskComments" EntityType="Self.TaskComments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaskLogs" EntityType="Self.TaskLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaskProjectUser" EntityType="Self.TaskProjectUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TaskSettings" EntityType="Self.TaskSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ProjectLogs_Project" Association="Self.FK_ProjectLogs_Project">
             <End Role="Projects" EntitySet="Projects" />
@@ -304,10 +264,6 @@
           <AssociationSet Name="FK_ProjectLogs_User" Association="Self.FK_ProjectLogs_User">
             <End Role="Users" EntitySet="Users" />
             <End Role="ProjectLogs" EntitySet="ProjectLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectSettings_Project" Association="Self.FK_ProjectSettings_Project">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="ProjectSettings" EntitySet="ProjectSettings" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectUser_Project" Association="Self.FK_ProjectUser_Project">
             <End Role="Projects" EntitySet="Projects" />
@@ -353,16 +309,12 @@
             <End Role="Tasks" EntitySet="Tasks" />
             <End Role="TaskProjectUser" EntitySet="TaskProjectUser" />
           </AssociationSet>
-          <AssociationSet Name="FK_TaskSettings_Task" Association="Self.FK_TaskSettings_Task">
-            <End Role="Tasks" EntitySet="Tasks" />
-            <End Role="TaskSettings" EntitySet="TaskSettings" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ProjectManagementPlatformDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PMPDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ProjectLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -381,20 +333,11 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TItle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ProjectLogs" Relationship="Self.FK_ProjectLogs_Project" FromRole="Projects" ToRole="ProjectLogs" />
-          <NavigationProperty Name="ProjectSettings" Relationship="Self.FK_ProjectSettings_Project" FromRole="Projects" ToRole="ProjectSettings" />
-          <NavigationProperty Name="ProjectUsers" Relationship="Self.FK_ProjectUser_Project" FromRole="Projects" ToRole="ProjectUsers" />
-          <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Project" FromRole="Projects" ToRole="Tasks" />
-        </EntityType>
-        <EntityType Name="ProjectSetting">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DueDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectSettings_Project" FromRole="ProjectSettings" ToRole="Projects" />
+          <NavigationProperty Name="ProjectLogs" Relationship="Self.FK_ProjectLogs_Project" FromRole="Projects" ToRole="ProjectLogs" />
+          <NavigationProperty Name="ProjectUsers" Relationship="Self.FK_ProjectUser_Project" FromRole="Projects" ToRole="ProjectUsers" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Project" FromRole="Projects" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="ProjectUser">
           <Key>
@@ -449,23 +392,14 @@
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="Byte" Nullable="false" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DueDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Tasks" ToRole="Projects" />
           <NavigationProperty Name="Subtasks" Relationship="Self.FK_Subtask_Tasks" FromRole="Tasks" ToRole="Subtask" />
           <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComments_Tasks" FromRole="Tasks" ToRole="TaskComments" />
           <NavigationProperty Name="TaskLogs" Relationship="Self.FK_TaskLogs_Task" FromRole="Tasks" ToRole="TaskLogs" />
-          <NavigationProperty Name="TaskSettings" Relationship="Self.FK_TaskSettings_Task" FromRole="Tasks" ToRole="TaskSettings" />
           <NavigationProperty Name="ProjectUsers" Relationship="Self.TaskProjectUser" FromRole="Tasks" ToRole="ProjectUsers" />
-        </EntityType>
-        <EntityType Name="TaskSetting">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TaskId" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Task" Relationship="Self.FK_TaskSettings_Task" FromRole="TaskSettings" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -504,18 +438,6 @@
             </Principal>
             <Dependent Role="ProjectLogs">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProjectSettings_Project">
-          <End Role="Projects" Type="Self.Project" Multiplicity="1" />
-          <End Role="ProjectSettings" Type="Self.ProjectSetting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProjectSettings">
-              <PropertyRef Name="ProjectId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -627,18 +549,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TaskSettings_Task">
-          <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
-          <End Role="TaskSettings" Type="Self.TaskSetting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tasks">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TaskSettings">
-              <PropertyRef Name="TaskId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="TaskProjectUser">
           <End Role="ProjectUsers" Type="Self.ProjectUser" Multiplicity="*" />
           <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
@@ -646,13 +556,11 @@
         <EntityContainer Name="PMPDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ProjectLogs" EntityType="Self.ProjectLog" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
-          <EntitySet Name="ProjectSettings" EntityType="Self.ProjectSetting" />
           <EntitySet Name="ProjectUsers" EntityType="Self.ProjectUser" />
           <EntitySet Name="Subtasks" EntityType="Self.Subtask" />
           <EntitySet Name="TaskComments" EntityType="Self.TaskComment" />
           <EntitySet Name="TaskLogs" EntityType="Self.TaskLog" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
-          <EntitySet Name="TaskSettings" EntityType="Self.TaskSetting" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_ProjectLogs_Project" Association="Self.FK_ProjectLogs_Project">
             <End Role="Projects" EntitySet="Projects" />
@@ -661,10 +569,6 @@
           <AssociationSet Name="FK_ProjectLogs_User" Association="Self.FK_ProjectLogs_User">
             <End Role="Users" EntitySet="Users" />
             <End Role="ProjectLogs" EntitySet="ProjectLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectSettings_Project" Association="Self.FK_ProjectSettings_Project">
-            <End Role="Projects" EntitySet="Projects" />
-            <End Role="ProjectSettings" EntitySet="ProjectSettings" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectUser_Project" Association="Self.FK_ProjectUser_Project">
             <End Role="Projects" EntitySet="Projects" />
@@ -702,10 +606,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="TaskLogs" EntitySet="TaskLogs" />
           </AssociationSet>
-          <AssociationSet Name="FK_TaskSettings_Task" Association="Self.FK_TaskSettings_Task">
-            <End Role="Tasks" EntitySet="Tasks" />
-            <End Role="TaskSettings" EntitySet="TaskSettings" />
-          </AssociationSet>
           <AssociationSet Name="TaskProjectUser" Association="Self.TaskProjectUser">
             <End Role="ProjectUsers" EntitySet="ProjectUsers" />
             <End Role="Tasks" EntitySet="Tasks" />
@@ -716,9 +616,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProjectManagementPlatformDBModelStoreContainer" CdmEntityContainer="PMPDBEntities">
+        <EntityContainerMapping StorageEntityContainer="PMPDBModelStoreContainer" CdmEntityContainer="PMPDBEntities">
           <EntitySetMapping Name="ProjectLogs">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.ProjectLog">
+            <EntityTypeMapping TypeName="PMPDBModel.ProjectLog">
               <MappingFragment StoreEntitySet="ProjectLogs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
@@ -728,26 +628,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Projects">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.Project">
+            <EntityTypeMapping TypeName="PMPDBModel.Project">
               <MappingFragment StoreEntitySet="Projects">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TItle" ColumnName="TItle" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProjectSettings">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.ProjectSetting">
-              <MappingFragment StoreEntitySet="ProjectSettings">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="DueDate" ColumnName="DueDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectUsers">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.ProjectUser">
+            <EntityTypeMapping TypeName="PMPDBModel.ProjectUser">
               <MappingFragment StoreEntitySet="ProjectUsers">
                 <ScalarProperty Name="ProjectUserId" ColumnName="ProjectUserId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -757,7 +649,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Subtasks">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.Subtask">
+            <EntityTypeMapping TypeName="PMPDBModel.Subtask">
               <MappingFragment StoreEntitySet="Subtask">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -767,7 +659,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaskComments">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.TaskComment">
+            <EntityTypeMapping TypeName="PMPDBModel.TaskComment">
               <MappingFragment StoreEntitySet="TaskComments">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
@@ -777,7 +669,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaskLogs">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.TaskLog">
+            <EntityTypeMapping TypeName="PMPDBModel.TaskLog">
               <MappingFragment StoreEntitySet="TaskLogs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="LogDescription" ColumnName="LogDescription" />
@@ -787,20 +679,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tasks">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.Task">
+            <EntityTypeMapping TypeName="PMPDBModel.Task">
               <MappingFragment StoreEntitySet="Tasks">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TaskSettings">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.TaskSetting">
-              <MappingFragment StoreEntitySet="TaskSettings">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="DueDate" ColumnName="DueDate" />
@@ -808,7 +692,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="ProjectManagementPlatformDBModel.User">
+            <EntityTypeMapping TypeName="PMPDBModel.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -819,7 +703,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="TaskProjectUser" TypeName="ProjectManagementPlatformDBModel.TaskProjectUser" StoreEntitySet="TaskProjectUser">
+          <AssociationSetMapping Name="TaskProjectUser" TypeName="PMPDBModel.TaskProjectUser" StoreEntitySet="TaskProjectUser">
             <EndProperty Name="ProjectUsers">
               <ScalarProperty Name="ProjectUserId" ColumnName="ProjectUserId" />
             </EndProperty>

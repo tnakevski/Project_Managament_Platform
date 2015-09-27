@@ -1,0 +1,5 @@
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\PMP.AppServices.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\bin\Debug\PMP.AppServices.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\obj\Debug\PMP.AppServices.csprojResolveAssemblyReference.cache
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\obj\Debug\PMP.AppServices.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\PMP.AppServices\obj\Debug\PMP.AppServices.pdb

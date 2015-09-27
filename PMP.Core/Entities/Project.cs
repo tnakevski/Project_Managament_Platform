@@ -17,7 +17,6 @@ namespace PMP.Core.Entities
         public Project()
         {
             this.ProjectLogs = new HashSet<ProjectLog>();
-            this.ProjectSettings = new HashSet<ProjectSetting>();
             this.ProjectUsers = new HashSet<ProjectUser>();
             this.Tasks = new HashSet<Task>();
         }
@@ -25,9 +24,10 @@ namespace PMP.Core.Entities
         public int Id { get; set; }
         public string TItle { get; set; }
         public string Description { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public Nullable<System.DateTime> DueDate { get; set; }
     
         public virtual ICollection<ProjectLog> ProjectLogs { get; set; }
-        public virtual ICollection<ProjectSetting> ProjectSettings { get; set; }
         public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
         public virtual ICollection<Task> Tasks { get; set; }
     }

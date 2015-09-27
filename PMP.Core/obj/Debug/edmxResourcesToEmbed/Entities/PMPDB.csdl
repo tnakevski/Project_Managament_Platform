@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ProjectManagementPlatformDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="PMPDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="ProjectLog">
     <Key>
       <PropertyRef Name="Id" />
@@ -18,20 +18,11 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TItle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="ProjectLogs" Relationship="Self.FK_ProjectLogs_Project" FromRole="Projects" ToRole="ProjectLogs" />
-    <NavigationProperty Name="ProjectSettings" Relationship="Self.FK_ProjectSettings_Project" FromRole="Projects" ToRole="ProjectSettings" />
-    <NavigationProperty Name="ProjectUsers" Relationship="Self.FK_ProjectUser_Project" FromRole="Projects" ToRole="ProjectUsers" />
-    <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Project" FromRole="Projects" ToRole="Tasks" />
-  </EntityType>
-  <EntityType Name="ProjectSetting">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProjectId" Type="Int32" Nullable="false" />
     <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DueDate" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Project" Relationship="Self.FK_ProjectSettings_Project" FromRole="ProjectSettings" ToRole="Projects" />
+    <NavigationProperty Name="ProjectLogs" Relationship="Self.FK_ProjectLogs_Project" FromRole="Projects" ToRole="ProjectLogs" />
+    <NavigationProperty Name="ProjectUsers" Relationship="Self.FK_ProjectUser_Project" FromRole="Projects" ToRole="ProjectUsers" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Project" FromRole="Projects" ToRole="Tasks" />
   </EntityType>
   <EntityType Name="ProjectUser">
     <Key>
@@ -86,23 +77,14 @@
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Status" Type="Byte" Nullable="false" />
     <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DueDate" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Tasks" ToRole="Projects" />
     <NavigationProperty Name="Subtasks" Relationship="Self.FK_Subtask_Tasks" FromRole="Tasks" ToRole="Subtask" />
     <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComments_Tasks" FromRole="Tasks" ToRole="TaskComments" />
     <NavigationProperty Name="TaskLogs" Relationship="Self.FK_TaskLogs_Task" FromRole="Tasks" ToRole="TaskLogs" />
-    <NavigationProperty Name="TaskSettings" Relationship="Self.FK_TaskSettings_Task" FromRole="Tasks" ToRole="TaskSettings" />
     <NavigationProperty Name="ProjectUsers" Relationship="Self.TaskProjectUser" FromRole="Tasks" ToRole="ProjectUsers" />
-  </EntityType>
-  <EntityType Name="TaskSetting">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TaskId" Type="Int32" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Task" Relationship="Self.FK_TaskSettings_Task" FromRole="TaskSettings" ToRole="Tasks" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -141,18 +123,6 @@
       </Principal>
       <Dependent Role="ProjectLogs">
         <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectSettings_Project">
-    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
-    <End Role="ProjectSettings" Type="Self.ProjectSetting" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Projects">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ProjectSettings">
-        <PropertyRef Name="ProjectId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -264,18 +234,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TaskSettings_Task">
-    <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
-    <End Role="TaskSettings" Type="Self.TaskSetting" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tasks">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TaskSettings">
-        <PropertyRef Name="TaskId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="TaskProjectUser">
     <End Role="ProjectUsers" Type="Self.ProjectUser" Multiplicity="*" />
     <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
@@ -283,13 +241,11 @@
   <EntityContainer Name="PMPDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ProjectLogs" EntityType="Self.ProjectLog" />
     <EntitySet Name="Projects" EntityType="Self.Project" />
-    <EntitySet Name="ProjectSettings" EntityType="Self.ProjectSetting" />
     <EntitySet Name="ProjectUsers" EntityType="Self.ProjectUser" />
     <EntitySet Name="Subtasks" EntityType="Self.Subtask" />
     <EntitySet Name="TaskComments" EntityType="Self.TaskComment" />
     <EntitySet Name="TaskLogs" EntityType="Self.TaskLog" />
     <EntitySet Name="Tasks" EntityType="Self.Task" />
-    <EntitySet Name="TaskSettings" EntityType="Self.TaskSetting" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <AssociationSet Name="FK_ProjectLogs_Project" Association="Self.FK_ProjectLogs_Project">
       <End Role="Projects" EntitySet="Projects" />
@@ -298,10 +254,6 @@
     <AssociationSet Name="FK_ProjectLogs_User" Association="Self.FK_ProjectLogs_User">
       <End Role="Users" EntitySet="Users" />
       <End Role="ProjectLogs" EntitySet="ProjectLogs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectSettings_Project" Association="Self.FK_ProjectSettings_Project">
-      <End Role="Projects" EntitySet="Projects" />
-      <End Role="ProjectSettings" EntitySet="ProjectSettings" />
     </AssociationSet>
     <AssociationSet Name="FK_ProjectUser_Project" Association="Self.FK_ProjectUser_Project">
       <End Role="Projects" EntitySet="Projects" />
@@ -338,10 +290,6 @@
     <AssociationSet Name="FK_TaskLogs_User" Association="Self.FK_TaskLogs_User">
       <End Role="Users" EntitySet="Users" />
       <End Role="TaskLogs" EntitySet="TaskLogs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TaskSettings_Task" Association="Self.FK_TaskSettings_Task">
-      <End Role="Tasks" EntitySet="Tasks" />
-      <End Role="TaskSettings" EntitySet="TaskSettings" />
     </AssociationSet>
     <AssociationSet Name="TaskProjectUser" Association="Self.TaskProjectUser">
       <End Role="ProjectUsers" EntitySet="ProjectUsers" />

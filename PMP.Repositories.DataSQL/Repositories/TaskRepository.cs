@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace PMP.Repositories.DataSQL.Repositories
 {
-    public class TaskSettingRepository : BaseRepository<TaskSetting>
+    public class TaskRepository : BaseRepository<PMP.Core.Entities.Task>
     {
-        public TaskSettingRepository(PMPDBEntities context)
+        public TaskRepository(PMPDBEntities context)
             :base(context)
         {
 

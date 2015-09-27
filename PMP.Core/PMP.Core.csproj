@@ -54,9 +54,9 @@
       <DependentUpon>PMPDB.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\PMPDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>PMPDB.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Entities\PMPDB.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -67,9 +67,6 @@
       <DependentUpon>PMPDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ProjectLog.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\ProjectSetting.cs">
       <DependentUpon>PMPDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ProjectUser.cs">
@@ -85,9 +82,6 @@
       <DependentUpon>PMPDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TaskLog.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TaskSetting.cs">
       <DependentUpon>PMPDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\User.cs">
@@ -113,8 +107,8 @@
     </None>
     <None Include="Entities\PMPDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PMPDB.edmx</DependentUpon>
       <LastGenOutput>PMPDB.cs</LastGenOutput>
+      <DependentUpon>PMPDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

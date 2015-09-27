@@ -27,13 +27,11 @@ namespace PMP.Core.Entities
     
         public virtual DbSet<ProjectLog> ProjectLogs { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
-        public virtual DbSet<ProjectSetting> ProjectSettings { get; set; }
         public virtual DbSet<ProjectUser> ProjectUsers { get; set; }
         public virtual DbSet<Subtask> Subtasks { get; set; }
         public virtual DbSet<TaskComment> TaskComments { get; set; }
         public virtual DbSet<TaskLog> TaskLogs { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
-        public virtual DbSet<TaskSetting> TaskSettings { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -19,7 +19,6 @@ namespace PMP.Core.Entities
             this.Subtasks = new HashSet<Subtask>();
             this.TaskComments = new HashSet<TaskComment>();
             this.TaskLogs = new HashSet<TaskLog>();
-            this.TaskSettings = new HashSet<TaskSetting>();
             this.ProjectUsers = new HashSet<ProjectUser>();
         }
     
@@ -27,12 +26,14 @@ namespace PMP.Core.Entities
         public string Title { get; set; }
         public byte Status { get; set; }
         public int ProjectId { get; set; }
+        public string Description { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public Nullable<System.DateTime> DueDate { get; set; }
     
         public virtual Project Project { get; set; }
         public virtual ICollection<Subtask> Subtasks { get; set; }
         public virtual ICollection<TaskComment> TaskComments { get; set; }
         public virtual ICollection<TaskLog> TaskLogs { get; set; }
-        public virtual ICollection<TaskSetting> TaskSettings { get; set; }
         public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
     }
 }
