@@ -1,11 +1,11 @@
-﻿@model ProjectManagementPlatform.Models.TestModels.testProject
+﻿@model PMP.AppServices.DTO_s.ProjectDTO_s.ProjectOverviewDTO
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "ProjectPanel";
 }
 
 @section StyleSheets{
-    <link rel="stylesheet" href="../assets/vendor/asscrollable/asScrollable.css">
-    <link rel="stylesheet" href="../assets/css/pages/task-menu.css" />
+    <link rel="stylesheet" href="~/assets/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="~/assets/css/pages/task-menu.css" />
     <link rel="stylesheet" href="~/assets/vendor/nestable/nestable.css" />
     <link rel="stylesheet" href="~/assets/vendor/html5sortable/sortable.css" />
     <link rel="stylesheet" href="~/assets/vendor/tasklist/tasklist.css" />
@@ -141,7 +141,7 @@
                             <ul class="list-group list-group-bordered">
                                 @foreach (var task in Model.Tasks)
                                 {
-                                    if (task.Status == "In Progress")
+                                    if (task.Status == "InProgress")
                                     {
                                         <li class="list-group-item taskItem" style="border-radius:0px;">
                                             <span class="taskName">@task.Title</span>
@@ -186,9 +186,9 @@
     <script src="../../assets/vendor/masonry/masonry.pkgd.min.js"></script>
 }
 @section Scripts{
-    <script type="text/javascript" src="../../assets/js/plugins/responsive-tabs.js"></script>
-    <script type="text/javascript" src="../../assets/js/components/tabs.js"></script>
-    <script type="text/javascript" src="../../assets/js/components/asprogress.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/responsive-tabs.js"></script>
+    <script type="text/javascript" src="~/assets/js/components/tabs.js"></script>
+    <script type="text/javascript" src="~/assets/js/components/asprogress.js"></script>
     <script type="text/javascript" src="~/assets/vendor/html5sortable/html.sortable.min.js"></script>
     <script type="text/javascript" src="~/assets/vendor/nestable/jquery.nestable.js"></script>
     <script type="text/javascript" src="~/assets/js/components/html5sortable.min.js"></script>
@@ -197,3 +197,4 @@
     <script src="~/assets/js/panel.js"></script>
     <script src="~/assets/vendor/alertify-js/alertify.js"></script>
 }
+

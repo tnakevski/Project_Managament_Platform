@@ -29,8 +29,6 @@ function openTask() {
 
     //animate task panel in
     taskPanelIn(this);
-
-
 }
 
 

@@ -70,9 +70,9 @@ namespace ProjectManagementPlatform.Controllers
         public PartialViewResult Messages()
         {
             List<testMessages> messages = new List<testMessages>{
-                new testMessages{Avatar="../assets/portraits/2.jpg", User="Mary Adams",Date="30 minutes ago",Message="Anyways, I would like just do it"},
-                new testMessages{Avatar="../assets/portraits/3.jpg", User="Caleb Richards",Date="20 minutes ago",Message="I ckecked, it is fine"},
-                new testMessages{Avatar="../assets/portraits/4.jpg", User="June Lane",Date="10 minutes ago",Message="I would like you to check Task 1"},
+                new testMessages{Avatar="/assets/portraits/2.jpg", User="Mary Adams",Date="30 minutes ago",Message="Anyways, I would like just do it"},
+                new testMessages{Avatar="/assets/portraits/3.jpg", User="Caleb Richards",Date="20 minutes ago",Message="I ckecked, it is fine"},
+                new testMessages{Avatar="/assets/portraits/4.jpg", User="June Lane",Date="10 minutes ago",Message="I would like you to check Task 1"},
             };
 
             return PartialView("../Partials/LayoutPartials/_messages", messages);

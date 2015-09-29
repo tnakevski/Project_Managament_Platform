@@ -50,6 +50,11 @@
     <Compile Include="DTO%27s\AccountDTO%27s\LoginDTO.cs" />
     <Compile Include="DTO%27s\AccountDTO%27s\RegisterDTO.cs" />
     <Compile Include="DTO%27s\ProjectDTO%27s\CreateProjectDTO.cs" />
+    <Compile Include="DTO%27s\ProjectDTO%27s\ProjectOverviewDTO.cs" />
+    <Compile Include="DTO%27s\TaskDTO%27s\TaskDTO.cs" />
+    <Compile Include="Enums\TaskStatusColorEnum.cs" />
+    <Compile Include="Enums\TaskStatusEnum.cs" />
+    <Compile Include="Helpers\ConvertToDTO.cs" />
     <Compile Include="Helpers\ConvertToModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />

@@ -30,5 +30,12 @@ namespace PMP.AppServices.Services
             _uWork.ProjectUserRepo.Create(relation);
             _uWork.ProjectUserRepo.Save();
         }
+
+        public ProjectOverviewDTO GetProjectById(int id)
+        {
+            Project project = _uWork.ProjectRepo.GetById(id);
+            var projectDTO = ConvertToDTO.ConvertToProjectOverview(project);
+            return projectDTO;
+        }
     }
 }

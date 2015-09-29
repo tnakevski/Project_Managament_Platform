@@ -27,5 +27,10 @@ namespace ProjectManagementPlatform.Controllers
             return RedirectToAction("Welcome", "Home");
         }
 
+        public ActionResult ProjectPanel(int id)
+        {
+            var project = _projectService.GetProjectById(id);
+            return View(project);
+        }
 	}
 }

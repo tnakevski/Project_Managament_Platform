@@ -117,7 +117,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Dashboard\" />
-    <Folder Include="Views\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1940,6 +1939,7 @@
     <Content Include="assets\vendor\x-editable\images\loading.gif" />
     <Content Include="assets\vendor\x-editable\x-editable.css" />
     <Content Include="assets\vendor\x-editable\x-editable.min.css" />
+    <Content Include="Avatars\john_doe_1.jpg" />
     <Content Include="Avatars\tnakevski_profile.jpg" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -2494,6 +2494,7 @@
     <Content Include="Views\Partials\PanelPartials\_taskOverviewPanel.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Project\ProjectPanel.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="src\js\angular\app.js" />
     <Content Include="src\js\angular\router.js" />
@@ -2593,7 +2594,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Home\ProjectPanel.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
