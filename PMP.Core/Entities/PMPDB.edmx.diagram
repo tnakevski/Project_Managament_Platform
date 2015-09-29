@@ -25,6 +25,7 @@
         <AssociationConnector Association="PMPDBModel.FK_TaskLogs_Task" ManuallyRouted="false" />
         <AssociationConnector Association="PMPDBModel.FK_TaskLogs_User" ManuallyRouted="false" />
         <AssociationConnector Association="PMPDBModel.TaskProjectUser" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PMPDBModel.sysdiagram" Width="1.5" PointX="3.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -76,6 +76,9 @@
     <Compile Include="Entities\Subtask.cs">
       <DependentUpon>PMPDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\sysdiagram.cs">
+      <DependentUpon>PMPDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Task.cs">
       <DependentUpon>PMPDB.tt</DependentUpon>
     </Compile>
@@ -89,6 +92,7 @@
       <DependentUpon>PMPDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBaseRepository.cs" />
+    <Compile Include="Interfaces\IProjectRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

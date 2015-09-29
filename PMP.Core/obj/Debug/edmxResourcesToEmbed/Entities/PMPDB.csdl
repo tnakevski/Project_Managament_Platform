@@ -16,13 +16,13 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TItle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DueDate" Type="DateTime" Precision="0" />
     <NavigationProperty Name="ProjectLogs" Relationship="Self.FK_ProjectLogs_Project" FromRole="Projects" ToRole="ProjectLogs" />
     <NavigationProperty Name="ProjectUsers" Relationship="Self.FK_ProjectUser_Project" FromRole="Projects" ToRole="ProjectUsers" />
     <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Project" FromRole="Projects" ToRole="Tasks" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ProjectUser">
     <Key>
@@ -46,6 +46,7 @@
     <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Task" Relationship="Self.FK_Subtask_Tasks" FromRole="Subtask" ToRole="Tasks" />
     <NavigationProperty Name="User" Relationship="Self.FK_Subtask_Users" FromRole="Subtask" ToRole="Users" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="TaskComment">
     <Key>
@@ -101,6 +102,7 @@
     <NavigationProperty Name="Subtasks" Relationship="Self.FK_Subtask_Users" FromRole="Users" ToRole="Subtask" />
     <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComments_Users" FromRole="Users" ToRole="TaskComments" />
     <NavigationProperty Name="TaskLogs" Relationship="Self.FK_TaskLogs_User" FromRole="Users" ToRole="TaskLogs" />
+    <Property Name="Avatar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_ProjectLogs_Project">
     <End Role="Projects" Type="Self.Project" Multiplicity="1" />
@@ -295,5 +297,16 @@
       <End Role="ProjectUsers" EntitySet="ProjectUsers" />
       <End Role="Tasks" EntitySet="Tasks" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="PMPDBModel.sysdiagram" />
   </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

@@ -4,16 +4,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Common.Enumerations;
 using PMP.Repositories.DataSQL.Repositories;
 using PMP.Core.Entities;
 using ProjectManagementPlatform.Filters;
+using PMP.AppServices.Services;
 
 namespace ProjectManagementPlatform.Controllers
 {
     [AuthenticationFilter]
     public class HomeController : Controller
     {
+
+        HomeService _homeService;
+        public HomeController()
+        {
+            PMPDBEntities context = new PMPDBEntities();
+            _homeService = new HomeService(context);
+        }
+
+        public ActionResult Welcome()
+        {
+            return View();
+        }
+
+        //GET
+        public PartialViewResult ProjectList()
+        {
+            //return list of projects for logged user
+            List<Project> projects = _homeService.GetProjectsForUser();
+            return PartialView("../Partials/LayoutPartials/_projectList", projects);
+        }
+
         public ActionResult ProjectPanel(string title)
         {
             testProject project = new testProject();
@@ -31,24 +52,6 @@ namespace ProjectManagementPlatform.Controllers
             project.Title = title;
             project.Tasks = tasks;
             return View(project);
-        }
-
-        public ActionResult Welcome()
-        {
-            return View();
-        }
-
-        public PartialViewResult ProjectList()
-        {
-            List<testProject> projects = new List<testProject>{
-                new testProject{Id=1, Title = "Project 1"},
-                new testProject{Id=2, Title = "Project 2"},
-                new testProject{Id=3, Title = "Project 3"},
-                new testProject{Id=4, Title = "Project 4"},
-                new testProject{Id=5, Title = "Project 5"}
-            };
-
-            return PartialView("../Partials/LayoutPartials/_projectList", projects);
         }
 
         public PartialViewResult Notifications()

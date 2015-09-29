@@ -51,8 +51,17 @@ namespace ProjectManagementPlatform.Controllers
         [HttpPost]
         public ActionResult Register(RegisterDTO dto)
         {
-            var register = _accService.Register(dto);
-            return View();
+            if (ModelState.IsValid) {
+                ViewBag.Error = null;
+                if (_accService.Register(dto))
+                {
+                    return RedirectToAction("Login");
+                };
+
+                ViewBag.Error = "User exists, please try with different Username or Password";
+                return View(dto);
+            }
+            return View(dto);
         }
 
         public ActionResult SignOut()

@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    var user = (PMP.Core.Entities.User)Session["User"];
+    var avatarPath = System.Configuration.ConfigurationManager.AppSettings["AvatarPath"];
+}
 <!DOCTYPE html>
 <html class="no-js before-run" lang="en">
 <head>
@@ -30,15 +33,6 @@
     <link rel="stylesheet" href="../assets/fonts/web-icons/web-icons.min.css">
     <link rel="stylesheet" href="../assets/fonts/brand-icons/brand-icons.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
-
-    <!--[if lt IE 9]>
-      <script src="../assets/vendor/html5shiv/html5shiv.min.js"></script>
-      <![endif]-->
-    <!--[if lt IE 10]>
-      <script src="../assets/vendor/media-match/media.match.min.js"></script>
-      <script src="../assets/vendor/respond/respond.min.js"></script>
-      <![endif]-->
-    <!-- Scripts -->
     <script src="../assets/vendor/modernizr/modernizr.js"></script>
     <script src="../assets/vendor/breakpoints/breakpoints.js"></script>
     <script>
@@ -97,11 +91,11 @@
                 <!-- End Navbar Toolbar -->
                 <!-- Navbar Toolbar Right -->
                 <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
-                    <li class="dropdown">
+                    <li class="dropdown" data-toggle="tooltip" data-trigger="hover" data-placement="left" data-original-title="@user.Username">
                         <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
                            data-animation="slide-bottom" role="button">
                             <span class="avatar avatar-online">
-                                <img class="my-avatar" src="~/assets/portraits/profile.jpg" />
+                                <img class="my-avatar" src="@avatarPath/@user.Avatar" />
                                 <i></i>
                             </span>
                         </a>
@@ -117,7 +111,7 @@
                             </li>
                             <li class="divider" role="presentation"></li>
                             <li role="presentation">
-                                <a href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                                <a href="@Url.Action("SignOut","Account")" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -162,7 +156,7 @@
                             </a>
                         </li>
                         <li class="site-menu-category" style="border-top:1px solid grey">Projects</li>
-                        <li class="site-menu-item has-sub open">
+                        <li class="site-menu-item has-sub">
                             <a href="javascript:void(0)" data-slug="app">
                                 <i class="site-menu-icon wb-file" aria-hidden="true"></i>
                                 <span class="site-menu-title">Projects</span>
@@ -248,14 +242,7 @@
             </div>
         </div>
         <div class="site-menubar-footer">
-            <a href="javascript: void(0);" class="fold-show" data-placement="top" data-toggle="tooltip"
-               data-original-title="Settings">
-                <span class="icon wb-settings" aria-hidden="true"></span>
-            </a>
-            <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
-                <span class="icon wb-eye-close" aria-hidden="true"></span>
-            </a>
-            <a href="@Url.Action("SignOut","Account")" data-placement="top" data-toggle="tooltip" data-original-title="Logout">
+            <a href="@Url.Action("SignOut","Account")" data-placement="top" data-toggle="tooltip" data-original-title="Logout" style="width:100%">
                 <span class="icon wb-power" aria-hidden="true"></span>
             </a>
         </div>
@@ -281,53 +268,43 @@
                     <h4 class="modal-title" id="myModalLabel">Fill out the form and click Add Project</h4>
                     <p>Fields marked with * are optional and can be set later in the Project Settings panel</p>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-5 form-group">
-                            <label for="newProjectTitle">Title</label>
-                            <input type="text" class="form-control new-project-title-input" id="newProjectTitle" name="ProjectName" placeholder="Project Title" />
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-lg-9 form-group">
-                            <label for="createProjectDatetimePicker">
-                                <span>Select due date fot the project *</span>
-                            </label>
-                            <div class='input-group date datetimepicker' id="createProjectDatetimePicker">
-                                <input type='text' class="form-control new-project-datepicker" />
-                                <span class="input-group-addon">
-                                    <span class="icon wb-time"></span>
-                                </span>
+                @using (Html.BeginForm("CreateProject", "Project", FormMethod.Post))
+                {
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-5 form-group">
+                                <label for="newProjectTitle">Title</label>
+                                <input type="text" class="form-control new-project-title-input" id="newProjectTitle" name="Title" placeholder="Project Title" required="required"/>
                             </div>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-lg-9 form-group">
-                            <label for="newProjectTasks">Add Tasks to the project * (Note: You can add maximum 5 tasks from this form, for additional task check project settings)</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control new-project-task-input" id="newProjectTasks" name="newProjectTasks" placeholder="Task Title" />
-                                <div class="btn btn-primary input-group-addon new-project-add-task">Add Task</div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-lg-9 form-group">
+                                <label for="createProjectDatetimePicker">
+                                    <span>Select due date fot the project *</span>
+                                </label>
+                                <div class='input-group date datetimepicker' id="createProjectDatetimePicker">
+                                    <input type='text' class="form-control new-project-datepicker" name="DueDate" required="required" />
+                                    <span class="input-group-addon">
+                                        <span class="icon wb-time"></span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <ul class="list-group-gap col-md-9 new-project-task-list"></ul>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-9">
-                            <label for="newProjectDescription">Enter Project Description</label>
-                            <textarea class="form-control new-project-description" rows="5" id="newProjectDescription" placeholder="Project description..."></textarea>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-9">
+                                <label for="newProjectDescription">Enter Project Description</label>
+                                <textarea class="form-control new-project-description" rows="5" id="newProjectDescription" name="Description" placeholder="Project description..." required="required"></textarea>
+                            </div>
                         </div>
+                        <hr />
                     </div>
-                    <hr/>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary add-project">Add Project</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary add-project">Add Project</button>
+                    </div>
+                }
             </div>
         </div>
     </div>

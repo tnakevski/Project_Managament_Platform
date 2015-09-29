@@ -116,6 +116,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Dashboard\" />
+    <Folder Include="Views\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Filters\AuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1937,6 +1940,7 @@
     <Content Include="assets\vendor\x-editable\images\loading.gif" />
     <Content Include="assets\vendor\x-editable\x-editable.css" />
     <Content Include="assets\vendor\x-editable\x-editable.min.css" />
+    <Content Include="Avatars\tnakevski_profile.jpg" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -2593,10 +2597,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{061b720f-9117-42cb-8774-7eb5f54e9700}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PMP.AppServices\PMP.AppServices.csproj">
       <Project>{b9f6af94-9ebe-4527-b260-220d8bb8f57b}</Project>
       <Name>PMP.AppServices</Name>

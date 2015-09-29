@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PMP.Repositories.DataSQL.Repositories
 {
-    public class ProjectUserRepository : BaseRepository<UserRepository>
+    public class ProjectUserRepository : BaseRepository<ProjectUser>
     {
         public ProjectUserRepository(PMPDBEntities context)
             :base(context)
