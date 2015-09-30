@@ -11,10 +11,10 @@ using System.Web.Mvc;
 namespace ProjectManagementPlatform.Controllers
 {
     [AuthenticationFilter]
-    public class ProjectController : Controller
+    public class DashboardController : Controller
     {
         ProjectService _projectService;
-        public ProjectController()
+        public DashboardController()
         {
             PMPDBEntities _context = new PMPDBEntities();
             _projectService = new ProjectService(_context);
@@ -29,6 +29,7 @@ namespace ProjectManagementPlatform.Controllers
 
         public ActionResult ProjectPanel(int id)
         {
+            //get project for main project panel
             var project = _projectService.GetProjectById(id);
             return View(project);
         }

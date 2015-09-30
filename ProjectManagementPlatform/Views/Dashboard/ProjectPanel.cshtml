@@ -1,6 +1,7 @@
 ﻿@model PMP.AppServices.DTO_s.ProjectDTO_s.ProjectOverviewDTO
 @{
     ViewBag.Title = "ProjectPanel";
+    var avatarPath = System.Configuration.ConfigurationManager.AppSettings["AvatarPath"];
 }
 
 @section StyleSheets{
@@ -28,13 +29,108 @@
     </div>
     <!--End Page Header-->
     <!--Project Settings-->
-    <div class="col-lg-12 col-md-12 project-settings" style="margin-top:-20px; display:none; height:300px;">
+    <div class="col-lg-12 col-md-12 project-settings" style="margin-top:-20px; display:none;">
         <div class="panel nav-tabs-horizontal">
-            <div class="panel-heading">
-                <h3 class="panel-title">Project Settings</h3>
-            </div>
             <div class="panel-body">
-
+                <ul class="nav nav-tabs nav-tabs-line" data-plugin="nav-tabs" role="tablist">
+                    <li class="active" role="presentation">
+                        <a data-toggle="tab" href="#ProjectOverview"
+                           role="tab">Project Overview</a>
+                    </li>
+                    <li class="active" role="presentation">
+                        <a data-toggle="tab" href="#PeopleAssigned"
+                           role="tab">People Assigned</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab" href="#ProjectSettings"
+                           role="tab">Project Settings</a>
+                    </li>
+                    <!--Dropdown menu for smaller screens-->
+                    <li class="dropdown" role="presentation">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <span class="caret"></span>Dropdown
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="active" role="presentation">
+                                <a data-toggle="tab" href="#ProjectOverview"
+                                   role="tab">Project Overview</a>
+                            </li>
+                            <li class="active" role="presentation">
+                                <a data-toggle="tab" href="#PeopleAssigned"
+                                   role="tab">People Assigned</a>
+                            </li>
+                            <li role="presentation">
+                                <a data-toggle="tab" href="#ProjectSettings"
+                                   role="tab">Project Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--End Menu Tabs-->
+                <!--Panel Content-->
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <!--Project overview panel-->
+                        <div class="tab-pane active" id="ProjectOverview" role="tabpanel">
+                            <div class="blue-600">Due Date:</div>
+                            <div>
+                                @if (Model.DueDate == null)
+                                {
+                                    <span>Due Date is not set</span>
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(x => x.DueDate)
+                                }
+                            </div>
+                            <div class="blue-600">Project Description:</div>
+                            <div>
+                                <p>@Model.Description</p>
+                            </div>
+                        </div>
+                        <!--People Assigned panel-->
+                        <div class="tab-pane" id="PeopleAssigned" role="tabpanel">
+                            <div class="blue-600 margin-bottom-15">Admin is marked with green circle on the avatar:</div>
+                            @foreach (var user in Model.Users)
+                            {
+                                var admin = "";
+                                if (user.isAdmin)
+                                {
+                                    admin = "avatar-online";
+                                }
+                                <div class="col-md-1">
+                                    <span class="avatar @admin" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="@user.GetFullName()">
+                                        <img class="my-avatar" src="@avatarPath/@user.Avatar" style="width:40px; height:40px;">
+                                        <i></i>
+                                    </span>
+                                </div>
+                            }
+                        </div>
+                        <!--Project Settings panel-->
+                        <div class="tab-pane" id="ProjectSettings" role="tabpanel">
+                            <div class="col-md-4 block">
+                                <div class="blue-600">Change project Title:</div>
+                                <input type="text" class="form-control" placeholder="New name...">
+                                <button class="btn btn-primary margin-top-10" type="button">Save Name</button>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="blue-600">Change project description:</div>
+                                <textarea class="form-control" rows="1" style="resize: vertical;" placeholder="Drag bottom right corner for more space..."></textarea>
+                                <button class="btn btn-primary margin-top-10" type="button">Save</button>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="blue-600">Change project due date:</div>
+                                <div class='input-group date'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="icon wb-time"></span>
+                                    </span>
+                                </div>
+                                <div class="btn btn-primary margin-top-10">Save new date</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -177,7 +273,14 @@
     <!--End Task Menu-->
     <!--Task Window-->
     <div class="col-lg-7 col-md-7 task-overview">
-        @Html.Partial("../Partials/PanelPartials/_taskOverviewPanel", Model.Tasks.First())
+        @if (!Model.Tasks.Any())
+        {
+            @Html.Partial("../Partials/PanelPartials/_taskNotSelectedOverview")
+        }
+        else
+        {
+            @Html.Partial("../Partials/PanelPartials/_taskOverviewPanel", Model.Tasks.First())
+        }
     </div>
     <!--End Task Window-->
 </div>
@@ -187,14 +290,18 @@
 }
 @section Scripts{
     <script type="text/javascript" src="~/assets/js/plugins/responsive-tabs.js"></script>
-    <script type="text/javascript" src="~/assets/js/components/tabs.js"></script>
     <script type="text/javascript" src="~/assets/js/components/asprogress.js"></script>
-    <script type="text/javascript" src="~/assets/vendor/html5sortable/html.sortable.min.js"></script>
     <script type="text/javascript" src="~/assets/vendor/nestable/jquery.nestable.js"></script>
+    <script type="text/javascript" src="~/assets/js/components/tabs.js"></script>
+    <script type="text/javascript" src="~/assets/vendor/html5sortable/html.sortable.min.js"></script>
     <script type="text/javascript" src="~/assets/js/components/html5sortable.min.js"></script>
     <script type="text/javascript" src="~/assets/js/components/tasklist.min.js"></script>
-    <script src="~/assets/js/taskOverview.js"></script>
-    <script src="~/assets/js/panel.js"></script>
     <script src="~/assets/vendor/alertify-js/alertify.js"></script>
+    @if (Model.Tasks.Any() && Model.isAdmin)
+    {
+        <script src="~/assets/js/taskOverview.js"></script>
+
+    }
+    <script src="~/assets/js/panel.js"></script>
 }
 

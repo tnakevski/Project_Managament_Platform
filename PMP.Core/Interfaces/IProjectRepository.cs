@@ -10,5 +10,6 @@ namespace PMP.Core.Interfaces
     public interface IProjectRepository
     {
         List<Project> GetProjectsForUser(int id);
+        Project GetForOverview(int id);
     }
 }

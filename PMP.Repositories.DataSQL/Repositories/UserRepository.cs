@@ -27,5 +27,6 @@ namespace PMP.Repositories.DataSQL.Repositories
         {
             return _context.Users.Any(x => x.Username == username || x.Email == mail);
         }
+
     }
 }

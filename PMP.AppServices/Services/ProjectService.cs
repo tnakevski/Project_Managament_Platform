@@ -33,8 +33,11 @@ namespace PMP.AppServices.Services
 
         public ProjectOverviewDTO GetProjectById(int id)
         {
-            Project project = _uWork.ProjectRepo.GetById(id);
-            var projectDTO = ConvertToDTO.ConvertToProjectOverview(project);
+            //get selected project by id
+            Project project = _uWork.ProjectRepo.GetForOverview(id);
+            //convert model project to DTO project
+            ProjectOverviewDTO projectDTO = ConvertToDTO.ConvertToProjectOverview(project);
+            projectDTO.isAdmin = true;
             return projectDTO;
         }
     }

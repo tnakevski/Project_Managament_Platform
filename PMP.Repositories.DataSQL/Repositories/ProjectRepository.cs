@@ -23,5 +23,12 @@ namespace PMP.Repositories.DataSQL.Repositories
             return projects;
         }
 
+
+
+        public Project GetForOverview(int id)
+        {
+            Project project = _context.Projects.Include("ProjectUsers").Include("Tasks").Where(x => x.Id == id).FirstOrDefault();
+            return project;
+        }
     }
 }

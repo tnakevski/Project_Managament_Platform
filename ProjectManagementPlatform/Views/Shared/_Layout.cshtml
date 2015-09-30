@@ -95,7 +95,7 @@
                         <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
                            data-animation="slide-bottom" role="button">
                             <span class="avatar avatar-online">
-                                <img class="my-avatar" src="@avatarPath/@user.Avatar" />
+                                <img class="my-avatar" src="@avatarPath/@user.Avatar" style="width:30px; height:30px"/>
                                 <i></i>
                             </span>
                         </a>
@@ -268,7 +268,7 @@
                     <h4 class="modal-title" id="myModalLabel">Fill out the form and click Add Project</h4>
                     <p>Fields marked with * are optional and can be set later in the Project Settings panel</p>
                 </div>
-                @using (Html.BeginForm("CreateProject", "Project", FormMethod.Post))
+                @using (Html.BeginForm("CreateProject", "Dashboard", FormMethod.Post))
                 {
                     <div class="modal-body">
                         <div class="row">
