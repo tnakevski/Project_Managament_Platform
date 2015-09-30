@@ -33,5 +33,12 @@ namespace ProjectManagementPlatform.Controllers
             var project = _projectService.GetProjectById(id);
             return View(project);
         }
+
+        [HttpPost]
+        public JsonResult ChangeProjectTitle(int id, string title)
+        {
+            bool result = _projectService.ChangeTitle(id, title);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 	}
 }

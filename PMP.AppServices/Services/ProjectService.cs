@@ -37,8 +37,24 @@ namespace PMP.AppServices.Services
             Project project = _uWork.ProjectRepo.GetForOverview(id);
             //convert model project to DTO project
             ProjectOverviewDTO projectDTO = ConvertToDTO.ConvertToProjectOverview(project);
-            projectDTO.isAdmin = true;
             return projectDTO;
+        }
+
+
+        public bool ChangeTitle(int id, string title)
+        {
+            try
+            {
+                Project project = _uWork.ProjectRepo.GetById(id);
+                project.Title = title;
+                _uWork.ProjectRepo.Update(project);
+                _uWork.ProjectRepo.Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

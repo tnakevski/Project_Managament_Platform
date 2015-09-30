@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace PMP.AppServices.Helpers
 {
@@ -27,6 +28,8 @@ namespace PMP.AppServices.Helpers
         }
         public static ProjectOverviewDTO ConvertToProjectOverview(Project project)
         {
+            //get logged in user
+            var loggedUser = (User)HttpContext.Current.Session["User"];
             //converts model project to DTO project
             List<TaskDTO> taskDtos = new List<TaskDTO>();
             ProjectOverviewDTO projectDto = new ProjectOverviewDTO();
@@ -34,6 +37,7 @@ namespace PMP.AppServices.Helpers
             projectDto.Title = project.Title;
             projectDto.Description = project.Description;
             projectDto.DueDate = project.DueDate;
+            projectDto.isAdmin = project.ProjectUsers.Where(x => x.UserId == loggedUser.Id && x.ProjectId == project.Id).FirstOrDefault().isAdmin;
             foreach (var task in project.Tasks)
             {
                 //convert model task to DTO task
