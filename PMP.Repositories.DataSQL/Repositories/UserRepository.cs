@@ -28,5 +28,14 @@ namespace PMP.Repositories.DataSQL.Repositories
             return _context.Users.Any(x => x.Username == username || x.Email == mail);
         }
 
+
+
+        public List<User> GetNotAssignedUsers(int id)
+        {
+            List<User> projectUsers = _context.ProjectUsers.Where(x => x.ProjectId == id).ToList().Select(x => x.User).ToList();
+            List<User> allUsers = _context.Users.ToList();
+            List<User> users = allUsers.Except(projectUsers).ToList();
+            return users;
+        }
     }
 }

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/assets/vendor/tasklist/tasklist.css" />
     <link href="~/assets/css/taskOverview.css" rel="stylesheet" />
     <link href="~/assets/vendor/alertify-js/alertify.css" rel="stylesheet" />
+    <link href="~/assets/css/projectOverview.css" rel="stylesheet" />
 }
 
 <div class="page-content container-fluid">
@@ -80,7 +81,7 @@
                         <!--Project overview panel-->
                         <div class="tab-pane active" id="ProjectOverview" role="tabpanel">
                             <div class="blue-600">Due Date:</div>
-                            <div>
+                            <div class="project-due-date">
                                 @if (Model.DueDate == null)
                                 {
                                     <span>Due Date is not set</span>
@@ -91,12 +92,17 @@
                                 }
                             </div>
                             <div class="blue-600">Project Description:</div>
-                            <div>
+                            <div class="project-description">
                                 <p>@Model.Description</p>
                             </div>
                         </div>
                         <!--People Assigned panel-->
                         <div class="tab-pane" id="PeopleAssigned" role="tabpanel">
+                            @if (Model.isAdmin)
+                            {
+                                <div class="btn btn-success btn-outline margin-bottom-15 assign-to-project-modal" data-toggle="modal" data-target="#assignToProjectModal">Assing People</div>
+                            }
+
                             <div class="blue-600 margin-bottom-15">Admin is marked with green circle on the avatar:</div>
                             @foreach (var user in Model.Users)
                             {
@@ -117,25 +123,29 @@
                         @if (Model.isAdmin)
                         {
                             <div class="tab-pane" id="ProjectSettings" role="tabpanel">
-                                <div class="col-md-4 block">
+                                <div class="col-md-4">
                                     <div class="blue-600">Change project Title:</div>
                                     <input type="text" class="form-control project-new-title" placeholder="New name...">
                                     <button class="btn btn-primary margin-top-10 change-project-title" type="button">Save Name</button>
                                 </div>
-                                <div class="col-md-4 block">
+                                <div class="col-md-4">
                                     <div class="blue-600">Change project description:</div>
-                                    <textarea class="form-control" rows="1" style="resize: vertical;" placeholder="Drag bottom right corner for more space..."></textarea>
-                                    <button class="btn btn-primary margin-top-10" type="button">Save</button>
+                                    <textarea class="form-control change-project-description-input" rows="1" style="resize: vertical;" placeholder="Drag bottom right corner for more space..."></textarea>
+                                    <button class="btn btn-primary margin-top-10 change-project-description-btn" type="button">Save</button>
                                 </div>
-                                <div class="col-md-4 block">
+                                <div class="col-md-4">
                                     <div class="blue-600">Change project due date:</div>
-                                    <div class='input-group date'>
-                                        <input type='text' class="form-control" />
+                                    <div class='input-group date project-date-change'>
+                                        <input type='text' class="form-control change-project-date-input" />
                                         <span class="input-group-addon">
                                             <span class="icon wb-time"></span>
                                         </span>
                                     </div>
-                                    <div class="btn btn-primary margin-top-10">Save new date</div>
+                                    <div class="btn btn-primary margin-top-10 change-project-date-btn">Save</div>
+                                </div>
+                                <div class="col-md-4 margin-top-10 pull-right">
+                                    <div class="blue-600">Delete project:</div>
+                                    <div class="btn btn-danger delete-project-btn">Delete Project</div>
                                 </div>
                             </div>
                         }
@@ -293,6 +303,28 @@
         }
     </div>
     <!--End Task Window-->
+    <!--Assing Pepople to project modal-->
+    <div class="modal fade" id="assignToProjectModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-center" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">List of available people to assing</h4>
+                    <h5 class="blue-600">Click on user to select</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="scroll-container" style="overflow-y:scroll;height:500px">
+                        <ul class="list-group list-group-dividered user-to-assign-list"></ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary assing-project-btn">Assign</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 @section PluginScripts{
@@ -307,14 +339,14 @@
     <script type="text/javascript" src="~/assets/js/components/html5sortable.min.js"></script>
     <script type="text/javascript" src="~/assets/js/components/tasklist.min.js"></script>
     <script src="~/assets/vendor/alertify-js/alertify.js"></script>
+    <script src="~/assets/js/taskOverview.js"></script>
     @if (Model.Tasks.Any() && Model.isAdmin)
     {
-        <script src="~/assets/js/taskOverview.js"></script>
-
+        <script src="~/assets/js/taskSettings.js"></script>
     }
     @if (Model.isAdmin)
     {
-        <script src="~/assets/js/panelOverview.js"></script>
+        <script src="~/assets/js/projectSettings.js"></script>
     }
     <script src="~/assets/js/panel.js"></script>
 }

@@ -6,18 +6,6 @@
     $(".add-comment").click(addComment);
     $("#saveSubtaskBtn").click(addSubtask);
 
-    //set date picker for task 
-    var taskDatepicker = $('#taskDatetimePicker');
-    taskDatepicker.datetimepicker();
-    taskDatepicker.data("DateTimePicker").minDate(new Date());
-    taskDatepicker.data("DateTimePicker").date(null);
-    //set enter keypress for text area 
-    $('.comment-text-area').keypress(function (e) {
-        if (e.keyCode == 13 && !e.shiftKey) {
-            e.preventDefault();
-            addComment();
-        }
-    });
     //set enter keypress for add subtask modal
     $('#addSubtaskModal').keypress(function (e) {
         if (e.keyCode == 13 && !e.shiftKey) {

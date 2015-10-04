@@ -22,7 +22,7 @@
     })
 
     //set date picker for project create
-    var createProjectDatepicker = $('#createProjectDatetimePicker')
+    var createProjectDatepicker = $('#createProjectDatetimePicker');
     createProjectDatepicker.datetimepicker();
     createProjectDatepicker.data("DateTimePicker").minDate(new Date());
     createProjectDatepicker.data("DateTimePicker").date(null);

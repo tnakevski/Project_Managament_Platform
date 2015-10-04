@@ -2,7 +2,7 @@
 @foreach (var project in Model)
 {
     <li class="site-menu-item">
-        <a href="@Url.Action("ProjectPanel", "Dashboard", new { id = project.Id })" data-slug="layout">
+        <a href="@Url.Action("ProjectPanel", "Project", new { id = project.Id })" data-slug="layout">
             <i class="site-menu-icon wb-file" aria-hidden="true"></i>
             <span class="site-menu-title project-list-title-@project.Id">@project.Title</span>
         </a>

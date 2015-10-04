@@ -69,5 +69,21 @@ namespace PMP.AppServices.Helpers
             userDto.Avatar = user.Avatar;
             return userDto;
         }
+
+        public static List<UserToAssignDTO> ConvertToUserToAssingDTO(List<User> users)
+        {
+            List<UserToAssignDTO> usersDto = new List<UserToAssignDTO>();
+            
+            foreach (var user in users)
+            {
+                UserToAssignDTO userDto = new UserToAssignDTO();
+                userDto.Id = user.Id;
+                userDto.FullName = String.Format("{0} {1}", user.FirstName, user.LastName);
+                userDto.Username = user.Username;
+                userDto.Avatar = user.Avatar;
+                usersDto.Add(userDto);
+            }
+            return usersDto;
+        }
     }
 }
