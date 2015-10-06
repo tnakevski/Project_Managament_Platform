@@ -25,5 +25,14 @@ namespace PMP.AppServices.Services
             _uWork.TaskRepo.Save();
             return task.Id;
         }
+
+        public TaskOverViewDTO GetTaskOverView(int Id)
+        {
+            TaskOverViewDTO dto = new TaskOverViewDTO();
+            var task = _uWork.TaskRepo.GetById(Id);
+            dto.Id = task.Id;
+            dto.Title = task.Title;
+            return dto;
+        }
     }
 }

@@ -273,7 +273,6 @@
     <Content Include="assets\js\plugins\dateFormat.js" />
     <Content Include="assets\js\projectSettings.js" />
     <Content Include="assets\js\taskOverview.js" />
-    <Content Include="assets\js\taskSettings.js" />
     <Content Include="assets\portraits\profile.jpg" />
     <Content Include="assets\js\apps\app-basic.js" />
     <Content Include="assets\js\apps\app-basic.min.js" />

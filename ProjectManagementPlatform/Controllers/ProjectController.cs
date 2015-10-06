@@ -29,6 +29,7 @@ namespace ProjectManagementPlatform.Controllers
 
         public ActionResult ProjectPanel(int id)
         {
+            
             //get project for main project panel
             var project = _projectService.GetProjectById(id);
             return View(project);

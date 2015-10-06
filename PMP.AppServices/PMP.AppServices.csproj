@@ -53,6 +53,7 @@
     <Compile Include="DTO%27s\ProjectDTO%27s\ProjectOverviewDTO.cs" />
     <Compile Include="DTO%27s\TaskDTO%27s\CreateTaskDTO.cs" />
     <Compile Include="DTO%27s\TaskDTO%27s\TaskDTO.cs" />
+    <Compile Include="DTO%27s\TaskDTO%27s\TaskOverViewDTO.cs" />
     <Compile Include="DTO%27s\UserDTO%27s\UserAssignedDTO.cs" />
     <Compile Include="DTO%27s\UserDTO%27s\UserToAssignDTO.cs" />
     <Compile Include="Enums\TaskStatusColorEnum.cs" />

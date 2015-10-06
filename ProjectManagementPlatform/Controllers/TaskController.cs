@@ -22,5 +22,11 @@ namespace ProjectManagementPlatform.Controllers
            int id =  _taskService.CreateTask(dto);
             return Json(id, JsonRequestBehavior.AllowGet);
         }
+
+        public PartialViewResult TaskOverview(int Id)
+        {
+            TaskOverViewDTO dto = _taskService.GetTaskOverView(Id);
+            return PartialView("../Partials/PanelPartials/_taskOverviewPanel", dto);
+        }
 	}
 }

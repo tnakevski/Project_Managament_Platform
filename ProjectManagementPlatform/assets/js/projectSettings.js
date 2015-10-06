@@ -198,6 +198,7 @@
             snippet = AddNewTaskSnippet($title.val(), data, "pending");
             $(".task-list-pending").append(snippet);
             //attach click event listener on added task
+            //openTask function is implemented in panel.js file
             $(".task-list-" + data + "").click(openTask);
             alertify.success("Task " + $title.val() + " successfully added to project")
             //clear inputs
@@ -249,7 +250,7 @@ function AssignedUserSnippet(fullname, avatar) {
 }
 
 //toggles class to selected user for assignation
-//this class is crutials for assigning users to project 
+//this class is crucials for assigning users to project 
 //all users with this class are assigned 
 function selectToAssign() {
     $(this).toggleClass("user-assign-selected");
