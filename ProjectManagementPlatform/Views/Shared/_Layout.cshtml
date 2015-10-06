@@ -266,9 +266,9 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Fill out the form and click Add Project</h4>
-                    <p>Fields marked with * are optional and can be set later in the Project Settings panel</p>
+                    <h5 class="modal-title blue-600" id="myModalLabel">All fileds are required</h5>
                 </div>
-                @using (Html.BeginForm("CreateProject", "Project", FormMethod.Post))
+                @using (Html.BeginForm("CreateProject", "Project", FormMethod.Post, new { data_toggle = "validator" }))
                 {
                     <div class="modal-body">
                         <div class="row">
@@ -281,7 +281,7 @@
                         <div class="row">
                             <div class="col-lg-9 form-group">
                                 <label for="createProjectDatetimePicker">
-                                    <span>Select due date fot the project *</span>
+                                    <span>Select due date fot the project</span>
                                 </label>
                                 <div class='input-group date datetimepicker' id="createProjectDatetimePicker">
                                     <input type='text' class="form-control new-project-datepicker" name="DueDate" required="required" />
@@ -318,6 +318,7 @@
     <script src="~/assets/vendor/asscrollable/jquery.asScrollable.all.js"></script>
     <script src="~/assets/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
     <!-- Plugins -->
+    <script src="~/assets/js/bootstrapValidator.js"></script>
     <script src="~/assets/vendor/switchery/switchery.min.js"></script>
     <script src="~/assets/vendor/intro-js/intro.js"></script>
     <script src="~/assets/vendor/screenfull/screenfull.js"></script>

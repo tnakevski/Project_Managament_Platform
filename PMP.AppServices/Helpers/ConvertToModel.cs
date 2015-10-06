@@ -1,5 +1,6 @@
 ﻿using PMP.AppServices.DTO_s.AccountDTO_s;
 using PMP.AppServices.DTO_s.ProjectDTO_s;
+using PMP.AppServices.DTO_s.TaskDTO_s;
 using PMP.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,16 @@ namespace PMP.AppServices.Helpers
             project.DueDate = dto.DueDate;
             project.DateCreated = DateTime.Now;
             return project;
+        }
+
+        public static PMP.Core.Entities.Task ConvertToTask(CreateTaskDTO dto)
+        {
+            PMP.Core.Entities.Task task = new PMP.Core.Entities.Task();
+            task.Title = dto.Title;
+            task.Description = dto.Description;
+            task.DueDate = dto.DueDate;
+            task.DateCreated = DateTime.Now;
+            return task;
         }
     }
 }

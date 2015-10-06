@@ -71,7 +71,7 @@ namespace ProjectManagementPlatform.Controllers
         public ActionResult DeleteProject(int id)
         {
             _projectService.DeleteProject(id);
-            return RedirectToAction("Welcome", "Home");
+            return Json(Url.Action("Welcome", "Home"));
         }
 	}
 }

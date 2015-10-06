@@ -51,6 +51,7 @@
     <Compile Include="DTO%27s\AccountDTO%27s\RegisterDTO.cs" />
     <Compile Include="DTO%27s\ProjectDTO%27s\CreateProjectDTO.cs" />
     <Compile Include="DTO%27s\ProjectDTO%27s\ProjectOverviewDTO.cs" />
+    <Compile Include="DTO%27s\TaskDTO%27s\CreateTaskDTO.cs" />
     <Compile Include="DTO%27s\TaskDTO%27s\TaskDTO.cs" />
     <Compile Include="DTO%27s\UserDTO%27s\UserAssignedDTO.cs" />
     <Compile Include="DTO%27s\UserDTO%27s\UserToAssignDTO.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\HomeService.cs" />
     <Compile Include="Services\ProjectService.cs" />
+    <Compile Include="Services\TaskService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMP.Core\PMP.Core.csproj">

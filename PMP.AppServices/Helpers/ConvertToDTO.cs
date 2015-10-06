@@ -23,6 +23,7 @@ namespace PMP.AppServices.Helpers
             taskDto.Title = task.Title;
             taskDto.Status = (status).ToString();
             taskDto.StatusColor = (statusColor).ToString();
+            taskDto.Id = task.Id;
 
             return taskDto;
         }

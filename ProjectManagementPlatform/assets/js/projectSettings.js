@@ -1,10 +1,21 @@
 ﻿$(document).ready(function () {
+    //set datepicker for projcet date changing
     var projectChangeDatepicker = $(".project-date-change");
     projectChangeDatepicker.datetimepicker();
     projectChangeDatepicker.data("");
     projectChangeDatepicker.data("DateTimePicker").minDate(new Date());
     projectChangeDatepicker.data("DateTimePicker").date(null);
 
+    //set date picker for adding new task
+    var taskAddDatepicker = $('#taskAddDate');
+    taskAddDatepicker.datetimepicker();
+    var projectDueDate = $(".project-due-date").html();
+    taskAddDatepicker.data("DateTimePicker").minDate(new Date());
+    //set the maximum due date for the task to be as projects due date
+    var date = new Date(projectDueDate);
+    date.setDate(date.getDate() + 1);
+    taskAddDatepicker.data("DateTimePicker").maxDate(new Date(date));
+    taskAddDatepicker.data("DateTimePicker").date(null);
 
     //parameter object used for changing the project settings
     var changeProject = {
@@ -14,27 +25,38 @@
         description: "",
     }
 
+    //change project title
     $(".change-project-title").on("click", function () {
         changeProject.title = $(".project-new-title").val();
         //check if input empty
         if (changeProject.title == "" || changeProject.title == null) {
             alertify.error("Input field is empty, Please enter new name and click Save");
             return;
-        }
-        //get project id
-        changeProject.id = $(".project-id").html();
-        //make changes on server side using ajax post 
-        $.post("/Project/ChangeProjectTitle", changeProject, function () {
-            //change titles in view
-            $(".project-heading-title").html(changeProject.title);
-            $(".project-list-title-" + changeProject.id + "").html(changeProject.title);
-            //alert success
-            alertify.success("Name of project changed");
-            //clear input
-            $(".project-new-title").val("");
+        }      
+        alertify.confirm("Are you sure you want to change project name", function (e) {
+            if (e) {
+                //get project id
+                changeProject.id = $(".project-id").html();
+                //make changes on server side using ajax post 
+                $.post("/Project/ChangeProjectTitle", changeProject, function () {
+                    //change titles in view
+                    $(".project-heading-title").html(changeProject.title);
+                    $(".project-list-title-" + changeProject.id + "").html(changeProject.title);
+                    //alert success
+                    alertify.success("Name of project changed");
+                    //clear input
+                    $(".project-new-title").val("");
+                });
+            } else {
+                alertify.error("Canceled");
+                $(".project-new-title").val("");
+                return;
+            }
         });
+
     })
 
+    //change project date
     $(".change-project-date-btn").on("click", function () {
         var newDate = $(".change-project-date-input").val();
         //check if input is empty and alert
@@ -42,34 +64,54 @@
             alertify.error("Input field is empty, Please enter new date and click Save");
             return;
         }
-        //get ready the parameter object by adding id of project that needs to be changed and new due date
-        changeProject.id = $(".project-id").html();
-        changeProject.dueDate = newDate;
-        //make Ajax post to make the changes on server side
-        $.post("/Project/ChangeProjectDate", changeProject, function () {
-            //change due date in view
-            $(".project-due-date").html(changeProject.dueDate);
-            //alert success
-            alertify.success("Due Date of project changed");
-            ///clear input
-            $(".change-project-date-input").val("");
+        alertify.confirm("Are you sure you want to change project due date", function (e) {
+            if (e) {
+                //get ready the parameter object by adding id of project that needs to be changed and new due date
+                changeProject.id = $(".project-id").html();
+                changeProject.dueDate = newDate;
+                //make Ajax post to make the changes on server side
+                $.post("/Project/ChangeProjectDate", changeProject, function () {
+                    //change due date in view
+                    $(".project-due-date").html(changeProject.dueDate);
+                    //alert success
+                    alertify.success("Due Date of project changed");
+                    //clear input
+                    $(".change-project-date-input").val("");
+                });
+            } else {
+                alertify.error("Canceled");
+                //clear input
+                $(".change-project-date-input").val("");
+                return;
+            }
         });
     })
 
+    //change project descrtipion
     $(".change-project-description-btn").on("click", function () {
         var newDescription = $(".change-project-description-input").val();
         if (newDescription == "" || newDescription == null) {
             alertify.error("Input field is empty, Please enter new description and click Save");
             return;
         }
-        //get ready the parameter object
-        changeProject.id = $(".project-id").html();
-        changeProject.description = newDescription;
-        $.post("/Project/ChangeProjectDescription", changeProject, function () {
-            $(".project-description").html(changeProject.description);
-            alertify.success("Description of project changed");
-            $(".change-project-description-input").val("");
+        alertify.confirm("Are you sure you want to change project description", function (e) {
+            if (e) {
+                //get ready the parameter object
+                changeProject.id = $(".project-id").html();
+                changeProject.description = newDescription;
+                $.post("/Project/ChangeProjectDescription", changeProject, function () {
+                    $(".project-description").html(changeProject.description);
+                    alertify.success("Description of project changed");
+                    $(".change-project-description-input").val("");
+                });
+            } else {
+                alertify.error("Canceled");
+                //clear input
+                $(".change-project-description-input").val("");
+                return;
+            }
         });
+
     })
 
     //fills the modal wiht list of all users available to assign to the project
@@ -94,6 +136,7 @@
         })
     })
 
+    //assing pepople to project
     $(".assing-project-btn").on("click", function () {
         var idArray = [];
         var projectId = $(".project-id").html();
@@ -121,11 +164,13 @@
         })
     })
 
+    //delete project 
     $(".delete-project-btn").on("click", function () {
         alertify.confirm("Are you sure you want to delete this project", function (e) {
             if (e) {
                 var projectId = $(".project-id").html();
-                $.post("/Project/DeleteProject", { id: projectId }, function () {
+                $.post("/Project/DeleteProject", { id: projectId }, function (data) {
+                    window.location.href = data;
                 })
             } else {
                 alertify.error("Canceled");
@@ -133,7 +178,45 @@
             }
         });
     })
+
+    //add new task to project
+    $(".add-new-task").on("click", function () {
+        var $title = $(".new-task-title");
+        var $description = $(".new-task-description");
+        var $date = $(".new-task-date");
+        var projectId = $(".project-id").html();
+        //check if some input is empty
+        if ($title.val() == "" || $description.val() == "" || $date.val() == "") {
+            alertify.error("All fields are required")
+            return;
+        }
+        $.post("/Task/CreateTask", { Title: $title.val(), Description: $description.val(), DueDate: $date.val(), ProjectId: projectId }, function (data) {
+            var snippet = AddNewTaskSnippet($title.val(), data, "all");
+            //add task to all tasks list
+            $(".task-list-all").append(snippet);
+            //add task to pending tasks list
+            snippet = AddNewTaskSnippet($title.val(), data, "pending");
+            $(".task-list-pending").append(snippet);
+            //attach click event listener on added task
+            $(".task-list-" + data + "").click(openTask);
+            alertify.success("Task " + $title.val() + " successfully added to project")
+            //clear inputs
+            $title.val("");
+            $description.val("");
+            $date.val("");
+            $('#addNewTask').modal('hide');
+        })
+    })
 })
+
+//creates task snippet for the task list panel 
+function AddNewTaskSnippet(title,id,list) {
+    var li = '<li class="list-group-item taskItem task-list-' + id + '" id="task-'+list+'-'+id+'" style="border-radius:0px;">';
+    li += '<span class="taskName">' + title + '</span>';
+    li += '<span class="label label-danger pull-right">Pending</span>';
+    li += '</li>';
+    return li;
+}
 
 //creates the list snippet for users that can be assigned to project
 function UserToAssignSnippet(fullname, username, avatar, id)
@@ -154,6 +237,7 @@ function UserToAssignSnippet(fullname, username, avatar, id)
     return li;
 }
 
+//creates snippet for users assigned to project
 function AssignedUserSnippet(fullname, avatar) {
     var li = '<div class="col-md-1">';
     li += '<span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="'+fullname+'">';
@@ -164,7 +248,9 @@ function AssignedUserSnippet(fullname, avatar) {
     return li;
 }
 
-//adds class to selected user for assignation
+//toggles class to selected user for assignation
+//this class is crutials for assigning users to project 
+//all users with this class are assigned 
 function selectToAssign() {
     $(this).toggleClass("user-assign-selected");
 }

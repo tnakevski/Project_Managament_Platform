@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Task\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Filters\AuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -266,24 +268,13 @@
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\images\poster.jpg" />
     <Content Include="assets\js\app.js" />
+    <Content Include="assets\js\bootstrapValidator.js" />
     <Content Include="assets\js\panel.js" />
     <Content Include="assets\js\plugins\dateFormat.js" />
     <Content Include="assets\js\projectSettings.js" />
     <Content Include="assets\js\taskOverview.js" />
     <Content Include="assets\js\taskSettings.js" />
     <Content Include="assets\portraits\profile.jpg" />
-    <Content Include="assets\js\angular\app.js" />
-    <Content Include="assets\js\angular\app.min.js" />
-    <Content Include="assets\js\angular\router.js" />
-    <Content Include="assets\js\angular\router.min.js" />
-    <Content Include="assets\js\angular\ui\module-bootstrap.js" />
-    <Content Include="assets\js\angular\ui\module-bootstrap.min.js" />
-    <Content Include="assets\js\angular\ui\module-grids.js" />
-    <Content Include="assets\js\angular\ui\module-grids.min.js" />
-    <Content Include="assets\js\angular\ui\module-modules.js" />
-    <Content Include="assets\js\angular\ui\module-modules.min.js" />
-    <Content Include="assets\js\angular\ui\module-select.js" />
-    <Content Include="assets\js\angular\ui\module-select.min.js" />
     <Content Include="assets\js\apps\app-basic.js" />
     <Content Include="assets\js\apps\app-basic.min.js" />
     <Content Include="assets\js\apps\app-blog.js" />
