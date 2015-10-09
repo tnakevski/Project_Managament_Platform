@@ -22,10 +22,10 @@ namespace PMP.Core.Entities
         }
     
         public int Id { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public System.DateTime DateCreated { get; set; }
         public System.DateTime DueDate { get; set; }
-        public string Title { get; set; }
     
         public virtual ICollection<ProjectLog> ProjectLogs { get; set; }
         public virtual ICollection<ProjectUser> ProjectUsers { get; set; }

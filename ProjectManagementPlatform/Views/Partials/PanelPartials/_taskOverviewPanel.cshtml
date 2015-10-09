@@ -232,7 +232,13 @@
                 <h4 class="modal-title">Please enter subtask name</h4>
             </div>
             <div class="modal-body">
-                <input class="form-control" id="newSubtaskTitle" placeholder="Subtask Title" style="width:300px" required />
+                <div class="form-group">
+                    <input class="form-control" id="newSubtaskTitle" placeholder="Subtask Title" style="width:300px" required />
+                </div>
+                <div class="form-group">
+                    <label for="newSubtaskDescription">Enter Subtask Description</label>
+                    <textarea class="form-control" id="newSubtaskDescription" style="resize: vertical;" rows="5"></textarea>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

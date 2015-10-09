@@ -1,10 +1,9 @@
 ﻿function setTaskOverview () {
     var subtaskTitle;
     //add on click events on all of the buttons
-    $(".subtaskDeleteBtn").click(deleteSubtask);
     $(".check-subtask-done").click(checkSubtask);
     $(".add-comment").click(addComment);
-    $("#saveSubtaskBtn").click(addSubtask);
+
 
     //set enter keypress for comment text area 
     $('.comment-text-area').keypress(function (e) {
@@ -13,17 +12,7 @@
             addComment();
         }
     });
-    //set enter keypress for add subtask modal
-    $('#addSubtaskModal').keypress(function (e) {
-        if (e.keyCode == 13 && !e.shiftKey) {
-            e.preventDefault();
-            addSubtask();
-        }
-    });
-    //focus on input field when opening add subtask modal
-    $('#addSubtaskModal').on('shown.bs.modal', function () {
-        $('#newSubtaskTitle').focus();
-    })
+
 
     //get data for subrask overview
     $('#subtaskOverviewModal').on('shown.bs.modal', function () {
@@ -31,61 +20,6 @@
             $(".subtask-overview-description").text(data.Description);
         });
     })
-
-    function addSubtask() {
-        subtaskTitle = $("#newSubtaskTitle").val();
-        var liCount = $(".subtasks li").length + 1;
-        var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
-
-        //create the html snippet for subtask li
-        var li = "<li class='list-group-item' data-role='task'>";
-        li += "<div class='checkbox-custom checkbox-primary'>";
-        li += "<input type='checkbox' id='checkBox" + liCount + "' name='inputCheckboxesRecieve' class='check-subtask-done'>";
-        li += "<label for='checkBox" + liCount + "'>";
-        li += "<span>" + subtaskTitle + "</span>";
-        li += "</label>";
-        li += "<i class='icon wb-trash subtaskDeleteBtn subtask-action-button' id='deleteSubtaskBtn" + liCount + "' style='float:right'></i>";
-        li += "<span class='subtask-action-button' data-toggle='modal' data-target='#subtaskOverviewModal'>";
-        li += "<span class='icon wb-list' data-toggle='tooltip' data-placement='left' data-trigger='hover' data-original-title='Subtask Overview'></span>";
-        li += "</span>";
-        li += "</div>";
-        li += "</li>";
-
-        //add snippet to list, clear the modal and add click event on delete subtask button
-        $(".subtasks").prepend(li);
-
-        //add log about subtask being added
-        logTaskChange("Subtask", subtaskTitle, date, "added")
-
-        //clear the modal after adding subtask
-        $("#newSubtaskTitle").val("");
-        $("#addSubtaskModal").modal('hide');
-
-        //add on click event to created subtask
-        $("#deleteSubtaskBtn" + liCount + "").click(deleteSubtask);
-        $("#checkBox" + liCount + "").click(checkSubtask);
-        alertify.success("Subtask " + subtaskTitle + " added")
-    }
-
-    //delete subtask and make a log
-    function deleteSubtask() {
-        //get all needed data
-        var clicked = $(this);
-        subtaskTitle = clicked.siblings("label").children().html();
-        var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
-        alertify.confirm("Are you sure you want to delete this subtask", function (e) {
-            if (e) {
-                //remove the subtask
-                clicked.parent().parent().remove();
-                //add log about subtask being deleted
-                logTaskChange("Subtask", subtaskTitle, date, "deleted");
-                alertify.success("Subtask " + subtaskTitle + " deleted");
-            } else {
-                alertify.error("Canceled");
-                return;
-            }
-        });
-    }
 
     //check or uncheck Subtask and make a log
     function checkSubtask() {

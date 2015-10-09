@@ -18,7 +18,6 @@ namespace PMP.Core.Entities
         {
             this.ProjectLogs = new HashSet<ProjectLog>();
             this.ProjectUsers = new HashSet<ProjectUser>();
-            this.Subtasks = new HashSet<Subtask>();
             this.TaskComments = new HashSet<TaskComment>();
             this.TaskLogs = new HashSet<TaskLog>();
         }
@@ -33,7 +32,6 @@ namespace PMP.Core.Entities
     
         public virtual ICollection<ProjectLog> ProjectLogs { get; set; }
         public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
-        public virtual ICollection<Subtask> Subtasks { get; set; }
         public virtual ICollection<TaskComment> TaskComments { get; set; }
         public virtual ICollection<TaskLog> TaskLogs { get; set; }
     }

@@ -11,6 +11,102 @@
     taskDatepicker.data("DateTimePicker").maxDate(new Date(date));
     taskDatepicker.data("DateTimePicker").date(null);
 
+    //add on click event for subtask btn
+    $("#saveSubtaskBtn").click(addSubtask);
+    $(".subtaskDeleteBtn").click(deleteSubtask);
+    //set enter keypress for add subtask modal
+    $('#addSubtaskModal').keypress(function (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+            addSubtask();
+        }
+    });
+    //focus on input field when opening add subtask modal
+    $('#addSubtaskModal').on('shown.bs.modal', function () {
+        $('#newSubtaskTitle').focus();
+    })
+
+    function addSubtask() {
+        subtaskTitle = $("#newSubtaskTitle").val();
+        subtaskDescription = $("#newSubtaskDescription").val();
+        var taskId = $(".task-id").html();
+        var liCount = $(".subtasks li").length + 1;
+        var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
+
+        $.get("/Subtask/CreateSubtask", { title: subtaskTitle, description: subtaskDescription, taskId: taskId }, function (data) {
+            alert(JSON.stringify(data));
+            //create the html snippet for subtask li
+            var li = "<li class='list-group-item' data-role='task'>";
+            li += "<div class='checkbox-custom checkbox-primary'>";
+            li += "<input type='checkbox' id='checkBox-" + data + "' name='inputCheckboxesRecieve' class='check-subtask-done'>";
+            li += "<label for='checkBox-" + data + "'>";
+            li += "<span>" + subtaskTitle + "</span>";
+            li += "</label>";
+            li += "<i class='icon wb-trash subtaskDeleteBtn subtask-action-button' id='deleteSubtaskBtn-" + data + "' style='float:right'></i>";
+            li += "<span class='subtask-action-button' data-toggle='modal' data-target='#subtaskOverviewModal'>";
+            li += "<span class='icon wb-list' data-toggle='tooltip' data-placement='left' data-trigger='hover' data-original-title='Subtask Overview'></span>";
+            li += "</span>";
+            li += "</div>";
+            li += "</li>";
+
+            //add snippet to list, clear the modal and add click event on delete subtask button
+            $(".subtasks").prepend(li);
+
+            //add on click event to created subtask
+            $("#deleteSubtaskBtn-" + data + "").click(deleteSubtask);
+            $("#checkBox-" + data + "").click(checkSubtask);
+        });
+
+        //add log about subtask being added
+        logTaskChange("Subtask", subtaskTitle, date, "added")
+
+        //clear the modal after adding subtask
+        $("#newSubtaskTitle").val("");
+        $("#addSubtaskModal").modal('hide');
+
+
+        alertify.success("Subtask " + subtaskTitle + " added")
+    }
+
+    //check or uncheck Subtask and make a log
+    function checkSubtask() {
+        //get all of needed data
+        var clicked = $(this);
+        var li = clicked.parent().parent();
+        subtaskTitle = clicked.siblings("label").children().html();
+        var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
+
+        //check if subtask is already checked
+        if (li.hasClass("task-done")) {
+            logTaskChange("Subtask", subtaskTitle, date, "unchecked");
+            alertify.success("Subtask " + subtaskTitle + " unchecked");
+        }
+        else {
+            logTaskChange("Subtask", subtaskTitle, date, "marked as completed");
+            alertify.success("Subtask " + subtaskTitle + " marked as completed");
+        }
+    }
+    //delete subtask and make a log
+    function deleteSubtask() {
+        //get all needed data
+        var clicked = $(this);
+        subtaskTitle = clicked.siblings("label").children().html();
+        var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
+        alertify.confirm("Are you sure you want to delete this subtask", function (e) {
+            if (e) {
+                //remove the subtask
+                clicked.parent().parent().remove();
+                //add log about subtask being deleted
+                logTaskChange("Subtask", subtaskTitle, date, "deleted");
+                alertify.success("Subtask " + subtaskTitle + " deleted");
+            } else {
+                alertify.error("Canceled");
+                return;
+            }
+        });
+    }
+
+
     //change title of current task
     $(".task-change-title-btn").on("click", function () {
         var inputVal = $(".task-change-title-input").val();

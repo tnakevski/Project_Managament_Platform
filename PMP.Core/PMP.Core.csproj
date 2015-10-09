@@ -49,47 +49,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\PMPDB.Context.cs">
+    <Compile Include="Entities\PMPEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PMPDB.Context.tt</DependentUpon>
+      <DependentUpon>PMPEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\PMPDB.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
+    <Compile Include="Entities\PMPEntities.cs">
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\PMPDB.Designer.cs">
+    <Compile Include="Entities\PMPEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PMPDB.edmx</DependentUpon>
+      <DependentUpon>PMPEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Project.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ProjectLog.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ProjectUser.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Subtask.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\sysdiagram.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Task.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TaskComment.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TaskLog.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\User.cs">
-      <DependentUpon>PMPDB.tt</DependentUpon>
+      <DependentUpon>PMPEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IProjectRepository.cs" />
@@ -99,22 +96,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Entities\PMPDB.edmx">
+    <EntityDeploy Include="Entities\PMPEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PMPDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>PMPEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Entities\PMPDB.Context.tt">
+    <None Include="Entities\PMPEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PMPDB.edmx</DependentUpon>
-      <LastGenOutput>PMPDB.Context.cs</LastGenOutput>
+      <DependentUpon>PMPEntities.edmx</DependentUpon>
+      <LastGenOutput>PMPEntities.Context.cs</LastGenOutput>
     </None>
-    <None Include="Entities\PMPDB.edmx.diagram">
-      <DependentUpon>PMPDB.edmx</DependentUpon>
+    <None Include="Entities\PMPEntities.edmx.diagram">
+      <DependentUpon>PMPEntities.edmx</DependentUpon>
     </None>
-    <None Include="Entities\PMPDB.tt">
+    <None Include="Entities\PMPEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PMPDB.cs</LastGenOutput>
-      <DependentUpon>PMPDB.edmx</DependentUpon>
+      <DependentUpon>PMPEntities.edmx</DependentUpon>
+      <LastGenOutput>PMPEntities.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

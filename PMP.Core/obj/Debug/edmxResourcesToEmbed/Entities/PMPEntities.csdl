@@ -16,13 +16,13 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="DueDate" Type="DateTime" Precision="0" Nullable="false" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="ProjectLogs" Relationship="Self.FK_ProjectLogs_Project" FromRole="Projects" ToRole="ProjectLogs" />
     <NavigationProperty Name="ProjectUsers" Relationship="Self.FK_ProjectUser_Project" FromRole="Projects" ToRole="ProjectUsers" />
     <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Project" FromRole="Projects" ToRole="Tasks" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ProjectUser">
     <Key>
@@ -40,11 +40,11 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TaskId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Task" Relationship="Self.FK_Subtask_Tasks" FromRole="Subtask" ToRole="Tasks" />
-    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaskId" Type="Int32" />
+    <NavigationProperty Name="Task" Relationship="Self.FK_Subtasks_Tasks" FromRole="Subtasks" ToRole="Tasks" />
   </EntityType>
   <EntityType Name="TaskComment">
     <Key>
@@ -80,7 +80,7 @@
     <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DueDate" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Tasks" ToRole="Projects" />
-    <NavigationProperty Name="Subtasks" Relationship="Self.FK_Subtask_Tasks" FromRole="Tasks" ToRole="Subtask" />
+    <NavigationProperty Name="Subtasks" Relationship="Self.FK_Subtasks_Tasks" FromRole="Tasks" ToRole="Subtasks" />
     <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComments_Tasks" FromRole="Tasks" ToRole="TaskComments" />
     <NavigationProperty Name="TaskLogs" Relationship="Self.FK_TaskLogs_Task" FromRole="Tasks" ToRole="TaskLogs" />
     <NavigationProperty Name="ProjectUsers" Relationship="Self.TaskProjectUser" FromRole="Tasks" ToRole="ProjectUsers" />
@@ -95,11 +95,11 @@
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ProjectLogs" Relationship="Self.FK_ProjectLogs_User" FromRole="Users" ToRole="ProjectLogs" />
     <NavigationProperty Name="ProjectUsers" Relationship="Self.FK_ProjectUser_User" FromRole="Users" ToRole="ProjectUsers" />
     <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComments_Users" FromRole="Users" ToRole="TaskComments" />
     <NavigationProperty Name="TaskLogs" Relationship="Self.FK_TaskLogs_User" FromRole="Users" ToRole="TaskLogs" />
-    <Property Name="Avatar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_ProjectLogs_Project">
     <End Role="Projects" Type="Self.Project" Multiplicity="1" />
@@ -126,7 +126,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ProjectUser_Project">
-    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ProjectUsers" Type="Self.ProjectUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Projects">
@@ -138,7 +140,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Task_Project">
-    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Projects">
@@ -150,7 +154,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ProjectUser_User">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ProjectUsers" Type="Self.ProjectUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
@@ -161,20 +167,22 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Subtask_Tasks">
-    <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
-    <End Role="Subtask" Type="Self.Subtask" Multiplicity="*" />
+  <Association Name="FK_Subtasks_Tasks">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="Subtasks" Type="Self.Subtask" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Tasks">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Subtask">
+      <Dependent Role="Subtasks">
         <PropertyRef Name="TaskId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TaskComments_Tasks">
-    <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="TaskComments" Type="Self.TaskComment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Tasks">
@@ -198,7 +206,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TaskLogs_Task">
-    <End Role="Tasks" Type="Self.Task" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="TaskLogs" Type="Self.TaskLog" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Tasks">
@@ -254,9 +264,9 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="ProjectUsers" EntitySet="ProjectUsers" />
     </AssociationSet>
-    <AssociationSet Name="FK_Subtask_Tasks" Association="Self.FK_Subtask_Tasks">
+    <AssociationSet Name="FK_Subtasks_Tasks" Association="Self.FK_Subtasks_Tasks">
       <End Role="Tasks" EntitySet="Tasks" />
-      <End Role="Subtask" EntitySet="Subtasks" />
+      <End Role="Subtasks" EntitySet="Subtasks" />
     </AssociationSet>
     <AssociationSet Name="FK_TaskComments_Tasks" Association="Self.FK_TaskComments_Tasks">
       <End Role="Tasks" EntitySet="Tasks" />
@@ -278,16 +288,5 @@
       <End Role="ProjectUsers" EntitySet="ProjectUsers" />
       <End Role="Tasks" EntitySet="Tasks" />
     </AssociationSet>
-    <EntitySet Name="sysdiagrams" EntityType="PMPDBModel.sysdiagram" />
   </EntityContainer>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
 </Schema>
