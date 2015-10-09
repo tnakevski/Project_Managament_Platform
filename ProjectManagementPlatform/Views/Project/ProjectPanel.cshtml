@@ -49,6 +49,7 @@
                             <a data-toggle="tab" href="#ProjectSettings"
                                role="tab">Project Settings</a>
                         </li>
+                        <input type="hidden" id="hdnIsAdmin" value="true" />
                     }
                     <!--Dropdown menu for smaller screens-->
                     <li class="dropdown" role="presentation">
@@ -378,7 +379,9 @@
     <script type="text/javascript" src="~/assets/js/components/html5sortable.min.js"></script>
     <script type="text/javascript" src="~/assets/js/components/tasklist.min.js"></script>
     <script src="~/assets/vendor/alertify-js/alertify.js"></script>
+    <script src="~/assets/js/taskLogs.js"></script>
     <script src="~/assets/js/taskOverview.js"></script>
+    <script src="~/assets/js/taskSettings.js"></script>
     @if (Model.isAdmin)
     {
         <script src="~/assets/js/projectSettings.js"></script>

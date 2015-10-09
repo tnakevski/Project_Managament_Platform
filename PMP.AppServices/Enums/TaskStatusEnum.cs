@@ -9,7 +9,7 @@ namespace PMP.AppServices.Enums
     public enum TaskStatusEnum
     {
         Pending = 0,
-        InProgres = 1,
+        InProgress = 1,
         Done = 2
     }
 }

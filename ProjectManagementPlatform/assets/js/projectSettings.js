@@ -17,7 +17,7 @@
     taskAddDatepicker.data("DateTimePicker").maxDate(new Date(date));
     taskAddDatepicker.data("DateTimePicker").date(null);
 
-    //parameter object used for changing the project settings
+    //parameter object used to send new data to controller for changing the project settings
     var changeProject = {
         id: 0,
         title: "",

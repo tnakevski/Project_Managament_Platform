@@ -6,6 +6,13 @@
     $(".add-comment").click(addComment);
     $("#saveSubtaskBtn").click(addSubtask);
 
+    //set enter keypress for comment text area 
+    $('.comment-text-area').keypress(function (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+            addComment();
+        }
+    });
     //set enter keypress for add subtask modal
     $('#addSubtaskModal').keypress(function (e) {
         if (e.keyCode == 13 && !e.shiftKey) {
@@ -48,7 +55,7 @@
         $(".subtasks").prepend(li);
 
         //add log about subtask being added
-        logTaskChange(subtaskTitle, date, "added")
+        logTaskChange("Subtask", subtaskTitle, date, "added")
 
         //clear the modal after adding subtask
         $("#newSubtaskTitle").val("");
@@ -71,7 +78,7 @@
                 //remove the subtask
                 clicked.parent().parent().remove();
                 //add log about subtask being deleted
-                logTaskChange(subtaskTitle, date, "deleted");
+                logTaskChange("Subtask", subtaskTitle, date, "deleted");
                 alertify.success("Subtask " + subtaskTitle + " deleted");
             } else {
                 alertify.error("Canceled");
@@ -90,24 +97,15 @@
 
         //check if subtask is already checked
         if (li.hasClass("task-done")) {
-            logTaskChange(subtaskTitle, date, "unchecked");
+            logTaskChange("Subtask",subtaskTitle, date, "unchecked");
             alertify.success("Subtask " + subtaskTitle + " unchecked");
         }
         else {
-            logTaskChange(subtaskTitle, date, "marked as completed");
+            logTaskChange("Subtask",subtaskTitle, date, "marked as completed");
             alertify.success("Subtask " + subtaskTitle + " marked as completed");
         }
     }
 
-    //adds log to task logs
-    function logTaskChange(subtaskTitle, date, action) {
-        var log = "<li class='list-group-item bg-blue-grey-100 task-logs-item'>";
-        log += "<p class='list-group-item-heading font-size-16'>Me</p>";
-        log += "<p class='list-group-item-text'> Subtask " + subtaskTitle + " " + action + " </p>";
-        log += "<p>" + date + "</p>";
-        log += "</li>";
-        $(".task-logs").prepend(log);
-    }
     //create new comment
     function addComment() {
         //get needed data

@@ -25,8 +25,20 @@ namespace ProjectManagementPlatform.Controllers
 
         public PartialViewResult TaskOverview(int Id)
         {
-            TaskOverViewDTO dto = _taskService.GetTaskOverView(Id);
+            TaskOverViewAdminDTO dto = _taskService.GetTaskOverView(Id);
             return PartialView("../Partials/PanelPartials/_taskOverviewPanel", dto);
+        }
+
+        public JsonResult ChangeTaskTitle(int Id, string title)
+        {
+            var result = _taskService.ChangeTaskTitle(Id, title);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ChangeTaskStatus(int Id, string status)
+        {
+            var result = _taskService.ChangeTaskStatus(Id, status);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 	}
 }

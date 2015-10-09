@@ -1,11 +1,9 @@
-﻿@model PMP.AppServices.DTO_s.TaskDTO_s.TaskOverViewDTO
+﻿@model PMP.AppServices.DTO_s.TaskDTO_s.TaskOverViewAdminDTO
 
 <div class="panel nav-tabs-horizontal task-control-panel">
     <div class="panel-heading">
-        <h3 class="panel-title"><span id="taskTitle">@Model.Title</span></h3>
-        <div class="panel-actions">
-            <div class="panel-action task-due-date">Due date: 9/18/2015</div>
-        </div>
+        <div class="hidden task-id">@Model.Id</div>
+        <h3 class="panel-title"><span id="taskTitle">@Model.Title</span> - <span class="blue-600 font-size-16">Due Date:  @Html.DisplayFor(x => x.DueDate)</span></h3>
         <!--Task Tabs-->
         <ul class="nav nav-tabs nav-tabs-line" data-plugin="nav-tabs" role="tablist">
             <li class="active" role="presentation">
@@ -25,30 +23,6 @@
             <li role="presentation">
                 <a data-toggle="tab" href="#taskLogs"
                    role="tab">Task Logs</a>
-            </li>
-            <!--Dropdown menu for smaller screens-->
-            <li class="dropdown" role="presentation">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <span class="caret"></span>Dropdown
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li class="active" role="presentation">
-                        <a data-toggle="tab" href="#taskOverview"
-                           role="tab">Task Overview</a>
-                    </li>
-                    <li role="presentation">
-                        <a data-toggle="tab" href="#taskSettings"
-                           role="tab">Task Settings</a>
-                    </li>
-                    <li role="presentation">
-                        <a data-toggle="tab" href="#taskComments"
-                           role="tab">Task Comments</a>
-                    </li>
-                    <li role="presentation">
-                        <a data-toggle="tab" href="#taskLogs"
-                           role="tab">Task Logs</a>
-                    </li>
-                </ul>
             </li>
         </ul>
     </div>
@@ -114,7 +88,7 @@
                                         </span>
                                     </div>
                                 </li>
-                                <li class="list-group-item " data-role="task">
+                                <li class="list-group-item" data-role="task">
                                     <div class="checkbox-custom checkbox-primary">
                                         <input type="checkbox" id="3" name="inputCheckboxesBook" class="check-subtask-done">
                                         <label for="3">
@@ -167,15 +141,23 @@
                 <!--Task Settings-->
                 <div class="tab-pane" id="taskSettings" role="tabpanel">
                     <div class="row group">
-                        <input class="form-control" type="text" placeholder="Add new name for the current task..."/>
-                        <div class="btn btn-primary margin-top-10">Save new name</div>
+                        <input class="form-control task-change-title-input" type="text" placeholder="Add new name for the current task..."/>
+                        <div class="btn btn-primary margin-top-10 task-change-title-btn">Save new name</div>
                     </div>
                     <hr />
                     <div class="row group">
                         <div>
-                            <span>Current task status: Done</span>
+                            <span>Current task status: <span class="task-current-status">@Model.Status</span></span>
                         </div>
-                        <div class="btn btn-primary margin-top-10">Change task status</div>
+                        <div class="form-group">
+                            <label for="sel1">Select new status:</label>
+                            <select class="form-control task-change-status-input">
+                                <option>Pending</option>
+                                <option>InProgress</option>
+                                <option>Done</option>
+                            </select>
+                        </div>
+                        <div class="btn btn-primary margin-top-10 task-change-status-btn">Change task status</div>
                     </div>
                     <hr />
                     <div class="row group">

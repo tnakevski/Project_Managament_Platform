@@ -19,44 +19,37 @@ function openTask() {
     //make clicked task active  
     var $this = $(this);
     $(".taskItem").removeClass("active");
-    $this.addClass("active");
+
     //animate task panel out
     taskPanelOut()
     //get id of clicked task
     var taskId = $this.attr('id');
     taskId = taskId.split("-");
     taskId = taskId[taskId.length - 1];
+    //add class active to clicked task in all panels (all tasks, pending, in progress and done)
+    $(".taskItem[id$="+taskId+"]").addClass("active")
     //timeout is set because panel out animation lasts 1 sec
-    //So I need to ensure the data will not be shown before the panel ex
+    //So I need to ensure the data will not be shown before the panel exit
     setTimeout(function () {
         $.get("/Task/TaskOverview", { Id: taskId }, function (data) {
             $(".task-overview").html(data);
-            setTaskSettings();
             //setTaskOverView function is implemented in taskOverview.js
             setTaskOverview();
+            setTaskSettings();
+
         }).done(function () {
             //when done return the panel
             taskPanelIn(this);
+            setTimeout(function () {
+                //I need to remove this class since it adds some style to the panel 
+                //making it behave oddly 
+                $(".task-overview").removeClass('animated bounceInRight');
+            }, 1000);
         });
     }, 1000);
 
 }
 
-function setTaskSettings() {
-    //set date picker for task settings
-    var taskDatepicker = $('#taskDateChange');
-    taskDatepicker.datetimepicker();
-    taskDatepicker.data("DateTimePicker").minDate(new Date());
-    taskDatepicker.data("DateTimePicker").date(null);
-
-    //set enter keypress for text area 
-    $('.comment-text-area').keypress(function (e) {
-        if (e.keyCode == 13 && !e.shiftKey) {
-            e.preventDefault();
-            addComment();
-        }
-    });
-}
 
 //animate task panel out
 function taskPanelOut(callback) {

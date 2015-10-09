@@ -1,4 +1,5 @@
 ﻿using PMP.AppServices.DTO_s.TaskDTO_s;
+using PMP.AppServices.Enums;
 using PMP.AppServices.Helpers;
 using PMP.Core.Entities;
 using System;
@@ -26,13 +27,29 @@ namespace PMP.AppServices.Services
             return task.Id;
         }
 
-        public TaskOverViewDTO GetTaskOverView(int Id)
+        public TaskOverViewAdminDTO GetTaskOverView(int Id)
         {
-            TaskOverViewDTO dto = new TaskOverViewDTO();
             var task = _uWork.TaskRepo.GetById(Id);
-            dto.Id = task.Id;
-            dto.Title = task.Title;
-            return dto;
+            TaskOverViewAdminDTO taskDto = ConvertToDTO.ConvertToTaskOverviewAdmin(task);
+            return taskDto;
+        }
+
+        public bool ChangeTaskTitle(int Id, string title)
+        {
+            PMP.Core.Entities.Task task = _uWork.TaskRepo.GetById(Id);
+            task.Title = title;
+            _uWork.TaskRepo.Update(task);
+            _uWork.TaskRepo.Save();
+            return true;
+        }
+
+        public bool ChangeTaskStatus(int Id, string status)
+        {
+            PMP.Core.Entities.Task task = _uWork.TaskRepo.GetById(Id);
+            task.Status = (byte)((TaskStatusEnum) Enum.Parse(typeof(TaskStatusEnum), status));
+            _uWork.TaskRepo.Update(task);
+            _uWork.TaskRepo.Save();
+            return true;
         }
     }
 }

@@ -86,5 +86,16 @@ namespace PMP.AppServices.Helpers
             }
             return usersDto;
         }
+
+        public static TaskOverViewAdminDTO ConvertToTaskOverviewAdmin(PMP.Core.Entities.Task task)
+        {
+            TaskStatusEnum status = (TaskStatusEnum)task.Status;
+            TaskOverViewAdminDTO taskDto = new TaskOverViewAdminDTO();
+            taskDto.Title = task.Title;
+            taskDto.Id = task.Id;
+            taskDto.Status = (status).ToString();
+            taskDto.DueDate = task.DueDate;
+            return taskDto;
+        }
     }
 }
