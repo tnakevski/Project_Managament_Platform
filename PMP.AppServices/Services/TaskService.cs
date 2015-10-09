@@ -32,8 +32,23 @@ namespace PMP.AppServices.Services
 
         public TaskOverViewAdminDTO GetTaskOverView(int Id)
         {
+            var user = (User)HttpContext.Current.Session["User"];
             var task = _uWork.TaskRepo.GetById(Id);
+            var projectId = task.Project.Id;
             TaskOverViewAdminDTO taskDto = ConvertToDTO.ConvertToTaskOverviewAdmin(task);
+            ProjectUser checkAdmin = _uWork.ProjectUserRepo.GetSpecificProjectUser(projectId,user.Id);
+            if (checkAdmin.isAdmin == true)
+            {
+                taskDto.UserRole = "admin";
+                return taskDto;
+            }
+            bool checkAssigned = task.ProjectUsers.Any(x => x.ProjectId == projectId && x.UserId == user.Id);
+            if (checkAssigned)
+            {
+                taskDto.UserRole = "assigned";
+                return taskDto;
+            }
+            taskDto.UserRole = "notAssigned";
             return taskDto;
         }
 

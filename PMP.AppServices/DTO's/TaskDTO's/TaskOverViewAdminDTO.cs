@@ -17,5 +17,6 @@ namespace PMP.AppServices.DTO_s.TaskDTO_s
         public DateTime? DueDate { get; set; }
         public string Status { get; set; }
         public List<UserAssignedDTO> Users { get; set; }
+        public string UserRole { get; set; }
     }
 }

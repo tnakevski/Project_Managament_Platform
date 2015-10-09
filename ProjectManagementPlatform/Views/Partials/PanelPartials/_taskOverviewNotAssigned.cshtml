@@ -1,0 +1,63 @@
+﻿@model PMP.AppServices.DTO_s.TaskDTO_s.TaskOverViewAdminDTO
+@{
+    var avatarPath = System.Configuration.ConfigurationManager.AppSettings["AvatarPath"];
+}
+<div class="panel nav-tabs-horizontal task-control-panel">
+    <div class="panel-heading">
+        <div class="hidden task-user-role">@Model.UserRole</div>
+        <div class="hidden task-id">@Model.Id</div>
+        <h3 class="panel-title"><span id="taskTitle">@Model.Title</span> - <span class="blue-600 font-size-16 task-due-date">Due Date:  @Html.DisplayFor(x => x.DueDate)</span></h3>
+        <!--Task Tabs-->
+        <ul class="nav nav-tabs nav-tabs-line" data-plugin="nav-tabs" role="tablist">
+            <li class="active" role="presentation">
+                <a data-toggle="tab" href="#taskOverview"
+                   role="tab">Task Overview</a>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <!--Panel Content-->
+        <div class="panel-body">
+            <div class="tab-content">
+                <!--Task Overview-->
+                <div class="tab-pane active" id="taskOverview" role="tabpanel">
+                    <!--Assigned people on the task-->
+                    <h5 class="blue-600">Users assigned:</h5>
+                    <div class="row assigned-users-task">
+                        @foreach (var user in Model.Users)
+                        {
+                            <div class="col-md-1">
+                                <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="@user.GetFullName()">
+                                    <img src="@avatarPath/@user.Avatar" />
+                                </span>
+                            </div>
+                        }
+                    </div>
+                    <!--End of assigned pepople on the task-->
+                    <!--Subtasks List-->
+                    <div style="margin-top:20px">
+                        <h5 class="blue-600">Subtasks:</h5>
+                        <div class="scroll-container" style="overflow-y:scroll; height:400px">
+                            <ul class="list-group list-group-bordered">
+                                <li class="list-group-item">
+                                    subtask 1
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End of Subtasks List-->
+                    <p>Task Description:</p>
+                    <p>
+                        Conturbamur senectutem saepti statua, putanda homini acuti
+                        dialectica levamur urbanitas animadversionem mala se depulsa,
+                        magis nihilo efficeret tenetur cives gloriae concursio defendit
+                        conscientiam nascuntur, refugiendi defendit falsi platonem parand
+                        a metum iustioribus cognita robustus, tuum omnia tur cives gloriae concursio defendit
+                        conscientiam nascuntur, refugiendi defendit falsi platonem parand
+                    </p>
+                </div>
+            </div>
+            <!--End Panel Content-->
+        </div>
+    </div>
+

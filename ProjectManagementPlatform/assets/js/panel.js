@@ -33,10 +33,18 @@ function openTask() {
     setTimeout(function () {
         $.get("/Task/TaskOverview", { Id: taskId }, function (data) {
             $(".task-overview").html(data);
+            var role = $(".task-user-role").html();
             //setTaskOverView function is implemented in taskOverview.js
-            setTaskOverview();
-            setTaskSettings();
-
+            //setTaskSettings function is implemented in taskSettings.js
+            switch (role) {
+                case "admin":
+                    setTaskOverview();
+                    setTaskSettings();
+                    break;
+                case "assigned":
+                    setTaskOverview();
+                    break;
+            }
         }).done(function () {
             //when done return the panel
             taskPanelIn(this);

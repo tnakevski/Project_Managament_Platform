@@ -4,6 +4,7 @@
 }
 <div class="panel nav-tabs-horizontal task-control-panel">
     <div class="panel-heading">
+        <div class="hidden task-user-role">@Model.UserRole</div>
         <div class="hidden task-id">@Model.Id</div>
         <h3 class="panel-title"><span id="taskTitle">@Model.Title</span> - <span class="blue-600 font-size-16 task-due-date">Due Date:  @Html.DisplayFor(x => x.DueDate)</span></h3>
         <!--Task Tabs-->

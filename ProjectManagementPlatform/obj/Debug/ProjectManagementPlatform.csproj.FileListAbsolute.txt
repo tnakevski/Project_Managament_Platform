@@ -122,3 +122,14 @@ C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platf
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\obj\Debug\ProjectManagementPlatform.pdb
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\PMP.AppServices.dll
 C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\PMP.AppServices.pdb
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.Owin.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.Owin.Security.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Owin.dll
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.Owin.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Toni\Documents\Visual Studio 2013\Projects\PMP\Project_Managament_Platform\ProjectManagementPlatform\bin\Microsoft.Owin.Security.xml

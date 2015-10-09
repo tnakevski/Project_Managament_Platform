@@ -378,6 +378,8 @@
     <script type="text/javascript" src="~/assets/js/components/html5sortable.min.js"></script>
     <script type="text/javascript" src="~/assets/js/components/tasklist.min.js"></script>
     <script src="~/assets/vendor/alertify-js/alertify.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
     <script src="~/assets/js/taskLogs.js"></script>
     <script src="~/assets/js/taskOverview.js"></script>
     <script src="~/assets/js/taskSettings.js"></script>
@@ -386,5 +388,19 @@
         <script src="~/assets/js/projectSettings.js"></script>
     }
     <script src="~/assets/js/panel.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var chat = $.connection.baseHub;
+            $.connection.hub.start().done(function () {
+                chat.server.testSend("tralala");
+            });
+
+            chat.client.showTestMessage = function(message)
+            {
+                
+            }
+        });
+    </script>
 }
 

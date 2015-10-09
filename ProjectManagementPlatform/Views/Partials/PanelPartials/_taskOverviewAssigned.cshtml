@@ -1,0 +1,179 @@
+﻿@model PMP.AppServices.DTO_s.TaskDTO_s.TaskOverViewAdminDTO
+@{
+    var avatarPath = System.Configuration.ConfigurationManager.AppSettings["AvatarPath"];
+}
+<div class="panel nav-tabs-horizontal task-control-panel">
+    <div class="panel-heading">
+        <div class="hidden task-user-role">@Model.UserRole</div>
+        <div class="hidden task-id">@Model.Id</div>
+        <h3 class="panel-title"><span id="taskTitle">@Model.Title</span> - <span class="blue-600 font-size-16 task-due-date">Due Date:  @Html.DisplayFor(x => x.DueDate)</span></h3>
+        <!--Task Tabs-->
+        <ul class="nav nav-tabs nav-tabs-line" data-plugin="nav-tabs" role="tablist">
+            <li class="active" role="presentation">
+                <a data-toggle="tab" href="#taskOverview"
+                   role="tab">Task Overview</a>
+            </li>
+            <li role="presentation">
+                <a data-toggle="tab" href="#taskComments" role="tab">
+                    Task Comments
+                    <span class="badge badge-danger">5</span>
+                </a>
+            </li>
+            <li role="presentation">
+                <a data-toggle="tab" href="#taskLogs"
+                   role="tab">Task Logs</a>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <!--Panel Content-->
+        <div class="panel-body">
+            <div class="tab-content">
+                <!--Task Overview-->
+                <div class="tab-pane active" id="taskOverview" role="tabpanel">
+                    <!--Assigned people on the task-->
+                    <div class="row assigned-users-task">
+                        @foreach (var user in Model.Users)
+                        {
+                            <div class="col-md-1">
+                                <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="@user.GetFullName()">
+                                    <img src="@avatarPath/@user.Avatar" />
+                                </span>
+                            </div>
+                        }
+                    </div>
+                    <!--End of assigned pepople on the task-->
+                    <!--Subtasks List-->
+                    <div style="margin-top:20px">
+                        <div class="scroll-container" style="overflow-y:scroll; height:400px">
+                            <ul class="list-task list-group list-group-bordered sortable subtasks" data-role="tasklist" data-plugin="sortable">
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="1" name="inputCheckboxesCall" class="check-subtask-done">
+                                        <label for="1">
+                                            <span>Call clients for follow-up</span>
+                                        </label>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="2" name="inputCheckboxesCall" class="check-subtask-done">
+                                        <label for="2">
+                                            <span>Call clients for follow-up</span>
+                                        </label>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="3" name="inputCheckboxesBook" class="check-subtask-done">
+                                        <label for="3">
+                                            <span>Book flight for holiday</span>
+                                        </label>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="4" name="inputCheckboxesForward" class="check-subtask-done">
+                                        <label for="4">
+                                            <span>Forward important tasks</span>
+                                        </label>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input type="checkbox" id="5" name="inputCheckboxesRecieve" class="check-subtask-done">
+                                        <label for="5">
+                                            <span>Recieve shipment</span>
+                                        </label>
+                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End of Subtasks List-->
+                    <p>Task Description:</p>
+                    <p>
+                        Conturbamur senectutem saepti statua, putanda homini acuti
+                        dialectica levamur urbanitas animadversionem mala se depulsa,
+                        magis nihilo efficeret tenetur cives gloriae concursio defendit
+                        conscientiam nascuntur, refugiendi defendit falsi platonem parand
+                        a metum iustioribus cognita robustus, tuum omnia tur cives gloriae concursio defendit
+                        conscientiam nascuntur, refugiendi defendit falsi platonem parand
+                    </p>
+                </div>
+                <!--Task Comments-->
+                <div class="tab-pane" id="taskComments">
+                    <form class="comment-reply" action="#">
+                        <div class="form-group">
+                            <textarea class="form-control comment-text-area" rows="5" placeholder="Comment here"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary add-comment" type="button">Leave Comment</button>
+                        </div>
+                    </form>
+                    <div style="overflow-y:scroll; height: 400px;" class="scroll-container">
+                        <ul class="list-group list-group-gap comment-list">
+                            <li class=" list-group-item bg-blue-grey-100">
+                                <div class="comment media">
+                                    <div class="media-left">
+                                        <div class="avatar avatar-sm">
+                                            <img src="../../assets/portraits/2.jpg" />
+                                        </div>
+                                    </div>
+                                    <div class="comment-body media-body media-left">
+                                        <div class="comment-author">June Lane</div>
+                                        <div class="comment-meta">
+                                            <span class="date">9/18/2015</span>
+                                        </div>
+                                        <div class="comment-content">
+                                            <p>
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips
+                                                um has been the industry's standard dummy text ever since the 1500s, when an unknown pri
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--Task Logs-->
+                <div class="tab-pane scroll-container" id="taskLogs" role="tabpanel" style="overflow-y:scroll; height: 400px;">
+                    <ul class="list-group list-group-gap task-logs"></ul>
+                </div>
+            </div>
+        </div>
+        <!--End Panel Content-->
+    </div>
+</div>
+<div class="modal fade" id="subtaskOverviewModal" tabindex="-1" role="dialog" aria-labelledby="addTaskModal">
+    <div class="modal-dialog modal-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Subtask Overview</h4>
+            </div>
+            <div class="modal-body">
+                <div class="subtask-overview-description"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

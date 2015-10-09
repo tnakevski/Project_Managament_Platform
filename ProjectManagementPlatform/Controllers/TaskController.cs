@@ -1,6 +1,8 @@
-﻿using PMP.AppServices.DTO_s.TaskDTO_s;
+﻿using Microsoft.AspNet.SignalR;
+using PMP.AppServices.DTO_s.TaskDTO_s;
 using PMP.AppServices.Services;
 using PMP.Core.Entities;
+using ProjectManagementPlatform.Hubs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,20 +14,31 @@ namespace ProjectManagementPlatform.Controllers
     public class TaskController : Controller
     {
         TaskService _taskService;
+        IHubContext _hubContext;
         public TaskController()
         {
             PMPDBEntities context = new PMPDBEntities();
             _taskService = new TaskService(context);
+            _hubContext = GlobalHost.ConnectionManager.GetHubContext<BaseHub>();
         }
         public JsonResult CreateTask(CreateTaskDTO dto)
         {
            int id =  _taskService.CreateTask(dto);
-            return Json(id, JsonRequestBehavior.AllowGet);
+           return Json(id, JsonRequestBehavior.AllowGet);
         }
 
         public PartialViewResult TaskOverview(int Id)
         {
             TaskOverViewAdminDTO dto = _taskService.GetTaskOverView(Id);
+            switch (dto.UserRole)
+            {
+                case "admin":
+                    return PartialView("../Partials/PanelPartials/_taskOverviewPanel", dto);
+                case "assigned":
+                    return PartialView("../Partials/PanelPartials/_taskOverviewAssigned", dto);
+                case "notAssigned":
+                    return PartialView("../Partials/PanelPartials/_taskOverviewNotAssigned", dto);
+            }
             return PartialView("../Partials/PanelPartials/_taskOverviewPanel", dto);
         }
 
