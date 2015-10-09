@@ -121,7 +121,7 @@
         userToAssignList.html("");
         $.get("/Project/GetUsersToAssign", { id: projectId }, function (data) {
             if (data.length == 0) {
-                //if there are not pepople return 
+                //if there are not people return 
                 userToAssignList.append("There are no avaiable people to be assigned");
                 return;
             }

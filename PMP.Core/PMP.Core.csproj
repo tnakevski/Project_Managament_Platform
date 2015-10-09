@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IProjectRepository.cs" />
+    <Compile Include="Interfaces\IProjectUserRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

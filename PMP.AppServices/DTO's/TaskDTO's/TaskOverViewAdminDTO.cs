@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMP.AppServices.DTO_s.UserDTO_s;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace PMP.AppServices.DTO_s.TaskDTO_s
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime? DueDate { get; set; }
         public string Status { get; set; }
+        public List<UserAssignedDTO> Users { get; set; }
     }
 }

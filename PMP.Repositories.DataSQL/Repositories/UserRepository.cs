@@ -37,5 +37,14 @@ namespace PMP.Repositories.DataSQL.Repositories
             List<User> users = allUsers.Except(projectUsers).ToList();
             return users;
         }
+
+
+        public List<User> GetNotAssignedTaskUsers(int taskId, int projectId)
+        {
+            List<User> assigned = _context.Tasks.Where(x => x.Id == taskId).FirstOrDefault().ProjectUsers.ToList().Select(x => x.User).ToList();
+            List<User> projectUsers = _context.ProjectUsers.Where(x => x.ProjectId == projectId).ToList().Select(x => x.User).ToList();
+            List<User> result = projectUsers.Except(assigned).ToList();
+            return result;
+        }
     }
 }

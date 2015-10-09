@@ -12,5 +12,6 @@ namespace PMP.Core.Interfaces
         User FindByUsernameAndPass(string username, string password);
         bool CheckIfExists(string username, string mail);
         List<User> GetNotAssignedUsers(int id);
+        List<User> GetNotAssignedTaskUsers(int taskId, int projectId);
     }
 }

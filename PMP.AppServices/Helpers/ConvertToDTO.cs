@@ -95,6 +95,15 @@ namespace PMP.AppServices.Helpers
             taskDto.Id = task.Id;
             taskDto.Status = (status).ToString();
             taskDto.DueDate = task.DueDate;
+            List<UserAssignedDTO> assignedUsers = new List<UserAssignedDTO>();
+            List<User> users = task.ProjectUsers.ToList().Select(x => x.User).ToList();
+            foreach (var user in users)
+            {
+                 //convert model user to assigned user dto
+                var converted = ConvertToAssignedUserDTO(user);
+                assignedUsers.Add(converted);
+            }
+            taskDto.Users = assignedUsers;
             return taskDto;
         }
     }

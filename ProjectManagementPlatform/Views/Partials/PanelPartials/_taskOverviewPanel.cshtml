@@ -1,9 +1,11 @@
 ﻿@model PMP.AppServices.DTO_s.TaskDTO_s.TaskOverViewAdminDTO
-
+@{
+    var avatarPath = System.Configuration.ConfigurationManager.AppSettings["AvatarPath"];
+}
 <div class="panel nav-tabs-horizontal task-control-panel">
     <div class="panel-heading">
         <div class="hidden task-id">@Model.Id</div>
-        <h3 class="panel-title"><span id="taskTitle">@Model.Title</span> - <span class="blue-600 font-size-16">Due Date:  @Html.DisplayFor(x => x.DueDate)</span></h3>
+        <h3 class="panel-title"><span id="taskTitle">@Model.Title</span> - <span class="blue-600 font-size-16 task-due-date">Due Date:  @Html.DisplayFor(x => x.DueDate)</span></h3>
         <!--Task Tabs-->
         <ul class="nav nav-tabs nav-tabs-line" data-plugin="nav-tabs" role="tablist">
             <li class="active" role="presentation">
@@ -33,27 +35,15 @@
                 <!--Task Overview-->
                 <div class="tab-pane active" id="taskOverview" role="tabpanel">
                     <!--Assigned people on the task-->
-                    <div class="row">
-                        <div class="col-md-1">
-                            <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Nakevski Toni">
-                                <img src="/assets/portraits/profile.jpg" />
-                            </span>
-                        </div>
-                        <div class="col-md-1">
-                            <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Nakevski Toni">
-                                <img src="~/assets/portraits/2.jpg" />
-                            </span>
-                        </div>
-                        <div class="col-md-1">
-                            <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Nakevski Toni">
-                                <img src="~/assets/portraits/3.jpg" />
-                            </span>
-                        </div>
-                        <div class="col-md-1">
-                            <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Nakevski Toni">
-                                <img src="~/assets/portraits/4.jpg" />
-                            </span>
-                        </div>
+                    <div class="row assigned-users-task">
+                        @foreach (var user in Model.Users)
+                        {
+                            <div class="col-md-1">
+                                <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="@user.GetFullName()">
+                                    <img src="@avatarPath/@user.Avatar" />
+                                </span>
+                            </div>
+                        }
                     </div>
                     <!--End of assigned pepople on the task-->
                     <!--Subtasks List-->
@@ -141,7 +131,7 @@
                 <!--Task Settings-->
                 <div class="tab-pane" id="taskSettings" role="tabpanel">
                     <div class="row group">
-                        <input class="form-control task-change-title-input" type="text" placeholder="Add new name for the current task..."/>
+                        <input class="form-control task-change-title-input" type="text" placeholder="Add new name for the current task..." />
                         <div class="btn btn-primary margin-top-10 task-change-title-btn">Save new name</div>
                     </div>
                     <hr />
@@ -165,26 +155,26 @@
                             <span>Select new due date and click on the save button to change it</span>
                         </label>
                         <div class='input-group col-md-8 date datetimepicker' id="taskDateChange">
-                            <input type='text' class="form-control" />
+                            <input type='text' class="form-control task-change-date-input" />
                             <span class="input-group-addon">
                                 <span class="icon wb-time"></span>
                             </span>
                         </div>
-                        <div class="btn btn-primary margin-top-10">Save new date</div>
+                        <div class="btn btn-primary margin-top-10 task-change-date-btn">Save new date</div>
                     </div>
                     <hr />
                     <div class="row group">
                         <div>
-                            <span>Currently working on task: 4</span>
+                            <span>Currently working on task: @Model.Users.Count() Users</span>
                         </div>
-                        <div class="btn btn-primary margin-top-10">Assign to task</div>
+                        <div class="btn btn-primary margin-top-10 assign-to-task-modal" data-toggle="modal" data-target="#assignToTaskModal">Assign to task</div>
                     </div>
                     <hr />
                     <div class="row group">
                         <div>
                             <span>Delete Task @Model.Title</span>
                         </div>
-                        <div class="btn btn-danger btn-outline margin-top-10">Delete Task</div>
+                        <div class="btn btn-danger btn-outline margin-top-10 task-delete-btn">Delete Task</div>
                     </div>
                     <hr />
                 </div>
@@ -261,6 +251,27 @@
                 <div class="subtask-overview-description"></div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--Assing Pepople to task modal-->
+<div class="modal fade" id="assignToTaskModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">List of available people to assing</h4>
+                <h5 class="blue-600">Click on user to select</h5>
+            </div>
+            <div class="modal-body">
+                <div class="scroll-container" style="overflow-y:scroll;height:500px">
+                    <ul class="list-group list-group-dividered user-to-assign-list-task"></ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary assing-task-btn">Assign</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

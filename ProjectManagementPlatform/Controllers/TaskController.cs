@@ -40,5 +40,29 @@ namespace ProjectManagementPlatform.Controllers
             var result = _taskService.ChangeTaskStatus(Id, status);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult ChangeTaskDate(int Id, string date)
+        {
+            var result = _taskService.ChangeTaskDate(Id, date);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult DeleteTask(int Id)
+        {
+            _taskService.DeleteTask(Id);
+            return PartialView("../Partials/PanelPartials/_taskNotSelectedOverview");
+        }
+
+        public JsonResult GetUsersToAssign(int taskId, int projectId)
+        {
+            var users = _taskService.GetUsersToAssign(taskId,projectId);
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult AssignUserTask(List<int> userIds, int projectId, int taskId)
+        {
+            var users = _taskService.AssignUsers(userIds, projectId, taskId);
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
 	}
 }
