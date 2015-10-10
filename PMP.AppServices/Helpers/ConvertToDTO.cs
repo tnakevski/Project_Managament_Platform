@@ -97,6 +97,7 @@ namespace PMP.AppServices.Helpers
             taskDto.DueDate = task.DueDate;
             taskDto.Description = task.Description;
             taskDto.Logs = task.TaskLogs.ToList();
+            taskDto.Comments = task.TaskComments.ToList();
             List<UserAssignedDTO> assignedUsers = new List<UserAssignedDTO>();
             List<User> users = task.ProjectUsers.ToList().Select(x => x.User).ToList();
             foreach (var user in users)

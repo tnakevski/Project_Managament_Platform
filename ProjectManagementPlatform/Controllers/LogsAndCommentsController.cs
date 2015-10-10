@@ -23,5 +23,11 @@ namespace ProjectManagementPlatform.Controllers
             var result = _logsAndCommentsService.AddLog(taskId, description);
             return Json(JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult AddComment(int taskId, string comment)
+        {
+            var result = _logsAndCommentsService.AddComment(taskId, comment);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 	}
 }

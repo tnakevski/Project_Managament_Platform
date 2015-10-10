@@ -31,6 +31,7 @@
                 <!--Task Overview-->
                 <div class="tab-pane active" id="taskOverview" role="tabpanel">
                     <!--Assigned people on the task-->
+                    <h5 class="blue-600">Users assigned:</h5>
                     <div class="row assigned-users-task">
                         @foreach (var user in Model.Users)
                         {
@@ -53,18 +54,18 @@
                                     if (subtask.Status == true)
                                     {
                                         subtaskDone = "task-done";
-                                        checkbox ="checked";
+                                        checkbox = "checked";
                                     }
                                     <li class="list-group-item @subtaskDone" data-role="task">
-                                    <div class="checkbox-custom checkbox-primary">
-                                        <input type="checkbox" id="checkBox-@subtask.Id" name="inputCheckboxesCall" class="check-subtask-done" @checkbox>
-                                        <label for="checkBox-@subtask.Id">
-                                            <span>@subtask.Title</span>
-                                        </label>
-                                        <span class="icon wb-list subtask-action-button subtask-overview-btn" id="subtask-overview-@subtask.Id" data-toggle="modal" data-target="#subtaskOverviewModal">
-                                        </span>
-                                    </div>
-                                </li>
+                                        <div class="checkbox-custom checkbox-primary">
+                                            <input type="checkbox" id="checkBox-@subtask.Id" name="inputCheckboxesCall" class="check-subtask-done" @checkbox>
+                                            <label for="checkBox-@subtask.Id">
+                                                <span>@subtask.Title</span>
+                                            </label>
+                                            <span class="icon wb-list subtask-action-button subtask-overview-btn" id="subtask-overview-@subtask.Id" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                            </span>
+                                        </div>
+                                    </li>
                                 }
                             </ul>
                         </div>
@@ -87,33 +88,44 @@
                     </form>
                     <div style="overflow-y:scroll; height: 400px;" class="scroll-container">
                         <ul class="list-group list-group-gap comment-list">
-                            <li class=" list-group-item bg-blue-grey-100">
-                                <div class="comment media">
-                                    <div class="media-left">
-                                        <div class="avatar avatar-sm">
-                                            <img src="../../assets/portraits/2.jpg" />
+                            @foreach (var comment in Model.Comments)
+                            {
+                                <li class=" list-group-item bg-blue-grey-100">
+                                    <div class="comment media">
+                                        <div class="media-left">
+                                            <div class="avatar avatar-sm">
+                                                <img src="@avatarPath/@comment.User.Avatar" />
+                                            </div>
+                                        </div>
+                                        <div class="comment-body media-body media-left">
+                                            <div class="comment-author">@comment.User.Username</div>
+                                            <div class="comment-meta">
+                                                <span class="date">9/18/2015</span>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p>
+                                                    @comment.Comment
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="comment-body media-body media-left">
-                                        <div class="comment-author">June Lane</div>
-                                        <div class="comment-meta">
-                                            <span class="date">9/18/2015</span>
-                                        </div>
-                                        <div class="comment-content">
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips
-                                                um has been the industry's standard dummy text ever since the 1500s, when an unknown pri
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
                 <!--Task Logs-->
                 <div class="tab-pane scroll-container" id="taskLogs" role="tabpanel" style="overflow-y:scroll; height: 400px;">
-                    <ul class="list-group list-group-gap task-logs"></ul>
+                    <ul class="list-group list-group-gap task-logs">
+                        @foreach (var log in Model.Logs)
+                        {
+                            <li class='list-group-item bg-blue-grey-100 task-logs-item'>
+                                <p class='list-group-item-heading font-size-16'>@log.User.FirstName</p>
+                                <p class='list-group-item-text'>@log.LogDescription</p>
+                                <p>@log.DateCreated</p>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </div>

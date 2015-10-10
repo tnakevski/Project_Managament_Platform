@@ -60,22 +60,25 @@
         //check if textarea empty - if empty return
         if (comment == "")
             return;
-        //create comment snippet
-        var li = "<li class='list-group-item bg-blue-grey-100 my-comment'>";
-        li += "<div class='comment media'>";
-        li += "<div class='media-left'>";
-        li += "<div class='avatar avatar-sm'><img src='" + avatar + "' /></div>";
-        li += "</div>";
-        li += "<div class='comment-body media-body media-left'>";
-        li += "<div class='comment-author'>Me</div>";
-        li += "<div class='comment-meta'><span class='date'>" + date + "</span></div>";
-        li += "<div class='comment-content'>";
-        li += "<p>" + comment + "</p>";
-        li += "</div></div></div></li>";
+        var taskId = $(".task-id").html();
+        $.post("/LogsAndComments/AddComment", { taskId: taskId, comment: comment }, function () {
+            //create comment snippet
+            var li = "<li class='list-group-item bg-blue-grey-100 my-comment'>";
+            li += "<div class='comment media'>";
+            li += "<div class='media-left'>";
+            li += "<div class='avatar avatar-sm'><img src='" + avatar + "' /></div>";
+            li += "</div>";
+            li += "<div class='comment-body media-body media-left'>";
+            li += "<div class='comment-author'>Me</div>";
+            li += "<div class='comment-meta'><span class='date'>" + date + "</span></div>";
+            li += "<div class='comment-content'>";
+            li += "<p>" + comment + "</p>";
+            li += "</div></div></div></li>";
 
-        //clear area and add comment to list
-        textarea.val("");
-        $(".comment-list").prepend(li);
+            //clear area and add comment to list
+            textarea.val("");
+            $(".comment-list").prepend(li);
+        })     
     }
 };
 
