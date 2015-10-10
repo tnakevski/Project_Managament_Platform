@@ -14,10 +14,13 @@
     });
 
 
-    //get data for subrask overview
-    $('#subtaskOverviewModal').on('shown.bs.modal', function () {
-        $.get("/Home/TaskDescription", function (data) {
-            $(".subtask-overview-description").text(data.Description);
+    $(".subtask-overview-btn").on("click", function () {
+        $(".subtask-overview-description").text("");
+        var clickedId = $(this).attr("id");
+        clickedId = clickedId.split("-");
+        clickedId = clickedId[clickedId.length - 1];
+        $.get("/Subtask/SubtaskDescription",{Id:clickedId}, function (data) {
+            $(".subtask-overview-description").text(data);
         });
     })
 

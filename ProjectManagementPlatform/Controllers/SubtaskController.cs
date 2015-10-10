@@ -40,5 +40,11 @@ namespace ProjectManagementPlatform.Controllers
             var result = _subtaskService.StatusTrue(Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult SubtaskDescription(int Id)
+        {
+            string result = _subtaskService.GetDescription(Id);
+            return Json(result,JsonRequestBehavior.AllowGet);
+        }
 	}
 }

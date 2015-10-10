@@ -20,7 +20,6 @@
             <li role="presentation">
                 <a data-toggle="tab" href="#taskComments" role="tab">
                     Task Comments
-                    <span class="badge badge-danger">5</span>
                 </a>
             </li>
             <li role="presentation">
@@ -71,9 +70,7 @@
                                                 <span>@subtask.Title</span>
                                             </label>
                                             <i class="icon wb-trash subtaskDeleteBtn subtask-action-button" id="deleteSubtaskBtn-@subtask.Id"></i>
-                                            <span class=" subtask-action-button" id="subtask-overview-@subtask.Id" data-toggle="modal" data-target="#subtaskOverviewModal">
-                                                <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
-                                            </span>
+                                            <span class="icon wb-list subtask-action-button subtask-overview-btn" id="subtask-overview-@subtask.Id" data-toggle="modal" data-target="#subtaskOverviewModal"></span>
                                         </div>
                                     </li>
                                 }
@@ -83,12 +80,7 @@
                     <!--End of Subtasks List-->
                     <p>Task Description:</p>
                     <p>
-                        Conturbamur senectutem saepti statua, putanda homini acuti
-                        dialectica levamur urbanitas animadversionem mala se depulsa,
-                        magis nihilo efficeret tenetur cives gloriae concursio defendit
-                        conscientiam nascuntur, refugiendi defendit falsi platonem parand
-                        a metum iustioribus cognita robustus, tuum omnia tur cives gloriae concursio defendit
-                        conscientiam nascuntur, refugiendi defendit falsi platonem parand
+                        @Model.Description
                     </p>
                 </div>
                 <!--Task Settings-->
@@ -179,7 +171,16 @@
                 </div>
                 <!--Task Logs-->
                 <div class="tab-pane scroll-container" id="taskLogs" role="tabpanel" style="overflow-y:scroll; height: 400px;">
-                    <ul class="list-group list-group-gap task-logs"></ul>
+                    <ul class="list-group list-group-gap task-logs">
+                        @foreach (var log in Model.Logs)
+                        {
+                            <li class='list-group-item bg-blue-grey-100 task-logs-item'>
+                                <p class='list-group-item-heading font-size-16'>@log.User.FirstName</p>
+                                <p class='list-group-item-text'>@log.LogDescription</p>
+                                <p>@log.DateCreated</p>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </div>

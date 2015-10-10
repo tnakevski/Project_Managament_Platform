@@ -36,7 +36,7 @@ namespace PMP.AppServices.Services
             var task = _uWork.TaskRepo.GetById(Id);
             var projectId = task.Project.Id;
             List<Subtask> subtasks = task.Subtasks.ToList();
-            TaskOverViewDTO taskDto = ConvertToDTO.ConvertToTaskOverviewAdmin(task);
+            TaskOverViewDTO taskDto = ConvertToDTO.ConvertToTaskOverview(task);
             taskDto.Subtasks = subtasks;
             ProjectUser checkAdmin = _uWork.ProjectUserRepo.GetSpecificProjectUser(projectId,user.Id);
             if (checkAdmin.isAdmin == true)

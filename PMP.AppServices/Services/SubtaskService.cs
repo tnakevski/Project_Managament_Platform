@@ -55,5 +55,12 @@ namespace PMP.AppServices.Services
             _uWork.SubtaskRepo.Save();
             return true;
         }
+
+        public string GetDescription(int Id)
+        {
+            Subtask subtask = _uWork.SubtaskRepo.GetById(Id);
+            string description = subtask.Description;
+            return description;
+        }
     }
 }

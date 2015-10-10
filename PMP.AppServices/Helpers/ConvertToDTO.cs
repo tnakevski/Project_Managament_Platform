@@ -87,7 +87,7 @@ namespace PMP.AppServices.Helpers
             return usersDto;
         }
 
-        public static TaskOverViewDTO ConvertToTaskOverviewAdmin(PMP.Core.Entities.Task task)
+        public static TaskOverViewDTO ConvertToTaskOverview(PMP.Core.Entities.Task task)
         {
             TaskStatusEnum status = (TaskStatusEnum)task.Status;
             TaskOverViewDTO taskDto = new TaskOverViewDTO();
@@ -95,6 +95,8 @@ namespace PMP.AppServices.Helpers
             taskDto.Id = task.Id;
             taskDto.Status = (status).ToString();
             taskDto.DueDate = task.DueDate;
+            taskDto.Description = task.Description;
+            taskDto.Logs = task.TaskLogs.ToList();
             List<UserAssignedDTO> assignedUsers = new List<UserAssignedDTO>();
             List<User> users = task.ProjectUsers.ToList().Select(x => x.User).ToList();
             foreach (var user in users)

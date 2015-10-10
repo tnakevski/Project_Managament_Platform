@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PMPDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PMPDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ProjectLogs">
           <Key>
             <PropertyRef Name="Id" />
@@ -147,9 +147,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Subtasks_Tasks">
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />
           <End Role="Subtasks" Type="Self.Subtasks" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tasks">

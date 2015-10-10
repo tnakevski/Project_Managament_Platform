@@ -20,5 +20,7 @@ namespace PMP.AppServices.DTO_s.TaskDTO_s
         public List<UserAssignedDTO> Users { get; set; }
         public string UserRole { get; set; }
         public List<Subtask> Subtasks { get; set; }
+        public string Description { get; set; }
+        public List<TaskLog> Logs { get; set; }
     }
 }
