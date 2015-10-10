@@ -18,6 +18,7 @@ namespace PMP.Core.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public Nullable<int> TaskId { get; set; }
+        public bool Status { get; set; }
     
         public virtual Task Task { get; set; }
     }

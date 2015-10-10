@@ -1,4 +1,4 @@
-﻿@model PMP.AppServices.DTO_s.TaskDTO_s.TaskOverViewAdminDTO
+﻿@model PMP.AppServices.DTO_s.TaskDTO_s.TaskOverViewDTO
 @{
     var avatarPath = System.Configuration.ConfigurationManager.AppSettings["AvatarPath"];
 }
@@ -41,7 +41,7 @@
                         {
                             <div class="col-md-1">
                                 <span class="avatar" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="@user.GetFullName()">
-                                    <img src="@avatarPath/@user.Avatar" />
+                                    <img src="@avatarPath/@user.Avatar" style="width:40px; height:40px" />
                                 </span>
                             </div>
                         }
@@ -55,66 +55,28 @@
                         </button>
                         <div class="scroll-container" style="overflow-y:scroll; height:400px">
                             <ul class="list-task list-group list-group-bordered sortable subtasks" data-role="tasklist" data-plugin="sortable">
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox-custom checkbox-primary">
-                                        <input type="checkbox" id="1" name="inputCheckboxesCall" class="check-subtask-done">
-                                        <label for="1">
-                                            <span>Call clients for follow-up</span>
-                                        </label>
-                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
-                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
-                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
-                                        </span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox-custom checkbox-primary">
-                                        <input type="checkbox" id="2" name="inputCheckboxesCall" class="check-subtask-done">
-                                        <label for="2">
-                                            <span>Call clients for follow-up</span>
-                                        </label>
-                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
-                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
-                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
-                                        </span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox-custom checkbox-primary">
-                                        <input type="checkbox" id="3" name="inputCheckboxesBook" class="check-subtask-done">
-                                        <label for="3">
-                                            <span>Book flight for holiday</span>
-                                        </label>
-                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
-                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
-                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
-                                        </span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox-custom checkbox-primary">
-                                        <input type="checkbox" id="4" name="inputCheckboxesForward" class="check-subtask-done">
-                                        <label for="4">
-                                            <span>Forward important tasks</span>
-                                        </label>
-                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
-                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
-                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
-                                        </span>
-                                    </div>
-                                </li>
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox-custom checkbox-primary">
-                                        <input type="checkbox" id="5" name="inputCheckboxesRecieve" class="check-subtask-done">
-                                        <label for="5">
-                                            <span>Recieve shipment</span>
-                                        </label>
-                                        <i class="icon wb-trash subtaskDeleteBtn subtask-action-button"></i>
-                                        <span class=" subtask-action-button" data-toggle="modal" data-target="#subtaskOverviewModal">
-                                            <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
-                                        </span>
-                                    </div>
-                                </li>
+                                @foreach (var subtask in Model.Subtasks)
+                                {
+                                    var subtaskDone = "";
+                                    var checkbox = "";
+                                    if (subtask.Status == true)
+                                    {
+                                        subtaskDone = "task-done";
+                                        checkbox = "checked";
+                                    }
+                                    <li class="list-group-item @subtaskDone" data-role="task">
+                                        <div class="checkbox-custom checkbox-primary">
+                                            <input type="checkbox" id="checkBox-@subtask.Id" name="inputCheckboxesCall" class="check-subtask-done" @checkbox>
+                                            <label for="checkBox-@subtask.Id">
+                                                <span>@subtask.Title</span>
+                                            </label>
+                                            <i class="icon wb-trash subtaskDeleteBtn subtask-action-button" id="deleteSubtaskBtn-@subtask.Id"></i>
+                                            <span class=" subtask-action-button" id="subtask-overview-@subtask.Id" data-toggle="modal" data-target="#subtaskOverviewModal">
+                                                <span class="icon wb-list" data-toggle="tooltip" data-placement="left" data-trigger="hover" data-original-title="Subtask Overview"></span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -263,7 +225,7 @@
         </div>
     </div>
 </div>
-    <!--Assing Pepople to task modal-->
+<!--Assing Pepople to task modal-->
 <div class="modal fade" id="assignToTaskModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-center" role="document">
         <div class="modal-content">

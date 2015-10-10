@@ -26,17 +26,24 @@
         //get all of needed data
         var clicked = $(this);
         var li = clicked.parent().parent();
+        var clickedId = $(this).attr("id");
+        clickedId = clickedId.split("-");
+        clickedId = clickedId[clickedId.length - 1];
         subtaskTitle = clicked.siblings("label").children().html();
         var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
 
         //check if subtask is already checked
         if (li.hasClass("task-done")) {
-            logTaskChange("Subtask",subtaskTitle, date, "unchecked");
-            alertify.success("Subtask " + subtaskTitle + " unchecked");
+            $.post("/Subtask/StatusFalse", { Id: clickedId }, function () {
+                logTaskChange("Subtask", subtaskTitle, date, "unchecked");
+                alertify.success("Subtask " + subtaskTitle + " unchecked");
+            })
         }
         else {
-            logTaskChange("Subtask",subtaskTitle, date, "marked as completed");
-            alertify.success("Subtask " + subtaskTitle + " marked as completed");
+            $.post("/Subtask/StatusTrue", { Id: clickedId }, function () {
+                logTaskChange("Subtask", subtaskTitle, date, "marked as completed");
+                alertify.success("Subtask " + subtaskTitle + " marked as completed");
+            })
         }
     }
 

@@ -18,6 +18,7 @@ namespace PMP.Core.Entities
         public string LogDescription { get; set; }
         public int TaskId { get; set; }
         public int UserId { get; set; }
+        public System.DateTime DateCreated { get; set; }
     
         public virtual Task Task { get; set; }
         public virtual User User { get; set; }
