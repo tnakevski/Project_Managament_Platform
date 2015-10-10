@@ -29,7 +29,7 @@ namespace ProjectManagementPlatform.Controllers
 
         public PartialViewResult TaskOverview(int Id)
         {
-            TaskOverViewAdminDTO dto = _taskService.GetTaskOverView(Id);
+            TaskOverViewDTO dto = _taskService.GetTaskOverView(Id);
             switch (dto.UserRole)
             {
                 case "admin":

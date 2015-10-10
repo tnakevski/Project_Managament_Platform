@@ -45,6 +45,7 @@
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TaskId" Type="Int32" />
     <NavigationProperty Name="Task" Relationship="Self.FK_Subtasks_Tasks" FromRole="Subtasks" ToRole="Tasks" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="TaskComment">
     <Key>
@@ -67,6 +68,7 @@
     <Property Name="UserId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Task" Relationship="Self.FK_TaskLogs_Task" FromRole="TaskLogs" ToRole="Tasks" />
     <NavigationProperty Name="User" Relationship="Self.FK_TaskLogs_User" FromRole="TaskLogs" ToRole="Users" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
   <EntityType Name="Task">
     <Key>

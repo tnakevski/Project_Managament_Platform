@@ -23,10 +23,37 @@ namespace PMP.AppServices.Services
             subtask.Title = title;
             subtask.Description = description;
             subtask.TaskId = taskId;
+            subtask.Status = false;
             _uWork.SubtaskRepo.Create(subtask);
             _uWork.SubtaskRepo.Save();
 
             return subtask.Id;
+        }
+
+        public bool DeleteSubtask(int subtaskId)
+        {
+            Subtask subtask = _uWork.SubtaskRepo.GetById(subtaskId);
+            _uWork.SubtaskRepo.Delete(subtask);
+            _uWork.SubtaskRepo.Save();
+            return true;
+        }
+
+        public object StatusFalse(int Id)
+        {
+            Subtask subtask = _uWork.SubtaskRepo.GetById(Id);
+            subtask.Status = false;
+            _uWork.SubtaskRepo.Update(subtask);
+            _uWork.SubtaskRepo.Save();
+            return true;
+        }
+
+        public object StatusTrue(int Id)
+        {
+            Subtask subtask = _uWork.SubtaskRepo.GetById(Id);
+            subtask.Status = true;
+            _uWork.SubtaskRepo.Update(subtask);
+            _uWork.SubtaskRepo.Save();
+            return true;
         }
     }
 }

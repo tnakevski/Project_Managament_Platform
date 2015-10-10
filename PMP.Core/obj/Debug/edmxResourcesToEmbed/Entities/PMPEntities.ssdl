@@ -36,6 +36,7 @@
     <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="TaskId" Type="int" />
+    <Property Name="Status" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TaskComments">
     <Key>
@@ -54,6 +55,7 @@
     <Property Name="LogDescription" Type="nvarchar(max)" Nullable="false" />
     <Property Name="TaskId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DateCreated" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="TaskProjectUser">
     <Key>
@@ -140,7 +142,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Subtasks_Tasks">
-    <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Subtasks" Type="Self.Subtasks" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Tasks">

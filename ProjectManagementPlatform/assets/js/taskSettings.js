@@ -30,11 +30,9 @@
         subtaskTitle = $("#newSubtaskTitle").val();
         subtaskDescription = $("#newSubtaskDescription").val();
         var taskId = $(".task-id").html();
-        var liCount = $(".subtasks li").length + 1;
         var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
 
         $.get("/Subtask/CreateSubtask", { title: subtaskTitle, description: subtaskDescription, taskId: taskId }, function (data) {
-            alert(JSON.stringify(data));
             //create the html snippet for subtask li
             var li = "<li class='list-group-item' data-role='task'>";
             li += "<div class='checkbox-custom checkbox-primary'>";
@@ -62,6 +60,7 @@
 
         //clear the modal after adding subtask
         $("#newSubtaskTitle").val("");
+        $("#newSubtaskDescription").val("");
         $("#addSubtaskModal").modal('hide');
 
 
@@ -73,17 +72,25 @@
         //get all of needed data
         var clicked = $(this);
         var li = clicked.parent().parent();
+        var clickedId = $(this).attr("id");
+        clickedId = clickedId.split("-");
+        clickedId = clickedId[clickedId.length - 1];
+
         subtaskTitle = clicked.siblings("label").children().html();
         var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
 
         //check if subtask is already checked
         if (li.hasClass("task-done")) {
-            logTaskChange("Subtask", subtaskTitle, date, "unchecked");
-            alertify.success("Subtask " + subtaskTitle + " unchecked");
+            $.post("/Subtask/StatusFalse", { Id: clickedId }, function () {
+                logTaskChange("Subtask", subtaskTitle, date, "unchecked");
+                alertify.success("Subtask " + subtaskTitle + " unchecked");
+            })
         }
         else {
-            logTaskChange("Subtask", subtaskTitle, date, "marked as completed");
-            alertify.success("Subtask " + subtaskTitle + " marked as completed");
+            $.post("/Subtask/StatusTrue", { Id: clickedId }, function () {
+                logTaskChange("Subtask", subtaskTitle, date, "marked as completed");
+                alertify.success("Subtask " + subtaskTitle + " marked as completed");
+            })
         }
     }
     //delete subtask and make a log
@@ -91,14 +98,21 @@
         //get all needed data
         var clicked = $(this);
         subtaskTitle = clicked.siblings("label").children().html();
+        //get id of clicked subtask 
+        subtaskId = clicked.attr("id");
+        subtaskId = subtaskId.split("-");
+        subtaskId = subtaskId[subtaskId.length - 1];
+
         var date = jQuery.format.date(new Date(), "dd/MM/yyyy HH:mm:ss");
         alertify.confirm("Are you sure you want to delete this subtask", function (e) {
             if (e) {
-                //remove the subtask
-                clicked.parent().parent().remove();
-                //add log about subtask being deleted
-                logTaskChange("Subtask", subtaskTitle, date, "deleted");
-                alertify.success("Subtask " + subtaskTitle + " deleted");
+                $.post("/Subtask/DeleteSubtask", { subtaskId: subtaskId }, function () {
+                    //remove the subtask
+                    clicked.parent().parent().remove();
+                    //add log about subtask being deleted
+                    logTaskChange("Subtask", subtaskTitle, date, "deleted");
+                    alertify.success("Subtask " + subtaskTitle + " deleted");
+                })
             } else {
                 alertify.error("Canceled");
                 return;

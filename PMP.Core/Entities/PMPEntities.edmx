@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PMPDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PMPDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ProjectLogs">
           <Key>
             <PropertyRef Name="Id" />
@@ -41,6 +41,7 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="TaskId" Type="int" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TaskComments">
           <Key>
@@ -59,6 +60,7 @@
           <Property Name="LogDescription" Type="nvarchar(max)" Nullable="false" />
           <Property Name="TaskId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="TaskProjectUser">
           <Key>
@@ -145,7 +147,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Subtasks_Tasks">
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Subtasks" Type="Self.Subtasks" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tasks">
@@ -307,8 +311,7 @@
             <End Role="TaskProjectUser" EntitySet="TaskProjectUser" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PMPDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -357,6 +360,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TaskId" Type="Int32" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Subtasks_Tasks" FromRole="Subtasks" ToRole="Tasks" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="TaskComment">
           <Key>
@@ -379,6 +383,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Task" Relationship="Self.FK_TaskLogs_Task" FromRole="TaskLogs" ToRole="Tasks" />
           <NavigationProperty Name="User" Relationship="Self.FK_TaskLogs_User" FromRole="TaskLogs" ToRole="Users" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -641,6 +646,7 @@
           <EntitySetMapping Name="Subtasks">
             <EntityTypeMapping TypeName="PMPDBModel.Subtask">
               <MappingFragment StoreEntitySet="Subtasks">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -661,6 +667,7 @@
           <EntitySetMapping Name="TaskLogs">
             <EntityTypeMapping TypeName="PMPDBModel.TaskLog">
               <MappingFragment StoreEntitySet="TaskLogs">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="LogDescription" ColumnName="LogDescription" />
                 <ScalarProperty Name="TaskId" ColumnName="TaskId" />

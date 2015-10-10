@@ -22,5 +22,23 @@ namespace ProjectManagementPlatform.Controllers
             int id = _subtaskService.CreateSubtask(title, description, taskId);
             return Json(id, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult DeleteSubtask(int subtaskId)
+        {
+            var result = _subtaskService.DeleteSubtask(subtaskId);
+            return Json(result ,JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult StatusFalse(int Id)
+        {
+            var result = _subtaskService.StatusFalse(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult StatusTrue(int Id)
+        {
+            var result = _subtaskService.StatusTrue(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 	}
 }

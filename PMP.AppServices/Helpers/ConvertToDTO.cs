@@ -87,10 +87,10 @@ namespace PMP.AppServices.Helpers
             return usersDto;
         }
 
-        public static TaskOverViewAdminDTO ConvertToTaskOverviewAdmin(PMP.Core.Entities.Task task)
+        public static TaskOverViewDTO ConvertToTaskOverviewAdmin(PMP.Core.Entities.Task task)
         {
             TaskStatusEnum status = (TaskStatusEnum)task.Status;
-            TaskOverViewAdminDTO taskDto = new TaskOverViewAdminDTO();
+            TaskOverViewDTO taskDto = new TaskOverViewDTO();
             taskDto.Title = task.Title;
             taskDto.Id = task.Id;
             taskDto.Status = (status).ToString();

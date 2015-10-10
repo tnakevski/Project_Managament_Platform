@@ -35,6 +35,7 @@
     <EntitySetMapping Name="Subtasks">
       <EntityTypeMapping TypeName="PMPDBModel.Subtask">
         <MappingFragment StoreEntitySet="Subtasks">
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -55,6 +56,7 @@
     <EntitySetMapping Name="TaskLogs">
       <EntityTypeMapping TypeName="PMPDBModel.TaskLog">
         <MappingFragment StoreEntitySet="TaskLogs">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="LogDescription" ColumnName="LogDescription" />
           <ScalarProperty Name="TaskId" ColumnName="TaskId" />
